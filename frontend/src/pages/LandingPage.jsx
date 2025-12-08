@@ -684,7 +684,7 @@ const LandingPage = () => {
               Latest YouTube Channeled Transmissions
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
-              {blogPosts.map((post) => (
+              {youtubVideos.map((video) => (
                 <Card key={post.id} className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden">
                   <div className="relative h-48 overflow-hidden">
                     <img
