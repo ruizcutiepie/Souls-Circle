@@ -94,7 +94,26 @@ const LandingPage = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-warm-white/90 via-warm-white/70 to-warm-white"></div>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 py-32 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left side - Ken's Photo */}
+            <div className="order-2 md:order-1 flex justify-center">
+              <div className="relative">
+                <div className="w-80 h-80 rounded-full overflow-hidden border-8 border-sage/30 shadow-2xl transform hover:scale-105 transition-all duration-500">
+                  <img
+                    src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/v1jts1vn_20250311_130413.jpg"
+                    alt="Ken - The Ascension Activator"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-gold/20 rounded-full blur-2xl"></div>
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-sage/20 rounded-full blur-2xl"></div>
+              </div>
+            </div>
+
+            {/* Right side - Text Content */}
+            <div className="order-1 md:order-2 text-center md:text-left">
           <div className="inline-block mb-6 animate-fade-in">
             <div className="flex items-center gap-2 text-sage px-4 py-2 rounded-full bg-sage/10 backdrop-blur-sm">
               <Star className="w-4 h-4" />
