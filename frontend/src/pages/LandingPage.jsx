@@ -714,14 +714,65 @@ const LandingPage = () => {
                 </Card>
               ))}
             </div>
-            <div className="text-center mt-8">
+            <div className="text-center mt-10">
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300"
+                className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-7 text-xl font-bold rounded-full transition-all duration-300"
                 onClick={() => window.location.href = externalLinks.youtube}
               >
-                Watch on YouTube
+                Watch More on YouTube
+              </Button>
+            </div>
+          </div>
+
+          {/* Blog Posts - MOVED TO BOTTOM */}
+          <div className="mt-20">
+            <h3 className="text-3xl font-bold text-navy mb-10" style={{ fontFamily: 'Playfair Display' }}>
+              Latest Soul Mission Insights
+            </h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {blogPosts.map((post) => (
+                <Card key={post.id} className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-navy text-white text-xs font-semibold rounded-full">
+                        {post.category}
+                      </span>
+                    </div>
+                  </div>
+                  <CardHeader>
+                    <CardDescription className="text-charcoal/60 text-sm mb-2">
+                      {post.date}
+                    </CardDescription>
+                    <CardTitle className="text-xl font-bold text-navy group-hover:text-gold transition-colors duration-300" 
+                                style={{ fontFamily: 'Playfair Display' }}>
+                      {post.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-charcoal/80 mb-4 leading-relaxed">{post.excerpt}</p>
+                    <div className="flex items-center text-navy font-semibold text-sm group-hover:gap-2 transition-all duration-300">
+                      Read More
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <div className="text-center mt-10">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-7 text-xl font-bold rounded-full transition-all duration-300"
+                onClick={() => window.location.href = externalLinks.blog}
+              >
+                Read More Articles
               </Button>
             </div>
           </div>
