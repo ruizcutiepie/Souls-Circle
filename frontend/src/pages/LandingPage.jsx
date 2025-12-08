@@ -602,25 +602,25 @@ const LandingPage = () => {
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-block mb-4 text-gold font-semibold text-sm tracking-wider uppercase">
-                Souls Circle Family
+              <div className="inline-block mb-6 text-gold font-bold text-base tracking-wider uppercase">
+                Join The Family
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" 
+              <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight" 
                   style={{ fontFamily: 'Playfair Display' }}>
-                You Don't Have to Walk<br />This Path Alone
+                This Is Where You<br />Find Your Tribe
               </h2>
-              <p className="text-xl text-white/80 mb-8 leading-relaxed">
-                Join a sacred community of empaths and lightworkers who truly understand your journey. 
-                A space for integration, connection, and belonging.
+              <p className="text-2xl text-white/90 mb-10 leading-relaxed font-medium">
+                A safe space for spiritual entrepreneurs, practitioners and change-makers to connect, 
+                share their stories, and feel truly seen.
               </p>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-5 mb-10">
                 {[
-                  'Monthly group energy clearings and activations',
-                  'Private community platform for support and connection',
-                  'Exclusive channeled content and teachings',
-                  'Integration support between your personal work',
-                  'A family who speaks your language'
+                  'Live coaching calls and channeled energy activations with Ken',
+                  'Weekly Light List - receive channeled portals and light codes',
+                  'Event replay archive - on-demand access to all past events',
+                  'Spiritual toolkit - meditations, routines, and practical tools',
+                  'Dedicated community space to connect with your soul family'
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
