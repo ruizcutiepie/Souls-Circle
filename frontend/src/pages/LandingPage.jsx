@@ -144,23 +144,23 @@ const LandingPage = () => {
                style={{ animationDelay: '0.4s' }}>
             <Button 
               size="lg" 
-              className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => window.location.href = externalLinks.energyBlockAssessment}
+              className="bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              onClick={() => window.location.href = externalLinks.challengeRegistration}
             >
-              Download the Free Energy Block Assessment
-              <ArrowRight className="ml-2 w-5 h-5" />
+              Join the FREE 3-Day Challenge
+              <ArrowRight className="ml-2 w-6 h-6" />
             </Button>
           </div>
 
-          <div className="mt-12 flex items-center md:justify-start justify-center gap-8 text-sm text-charcoal/70 animate-fade-in-up" 
+          <div className="mt-12 flex items-center md:justify-start justify-center gap-8 text-base text-charcoal/70 animate-fade-in-up" 
                style={{ animationDelay: '0.6s' }}>
             <div className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-sage" />
-              <span>10,000+ Empaths Activated</span>
+              <Calendar className="w-5 h-5 text-sage" />
+              <span className="font-medium">December 15-17, 2025</span>
             </div>
             <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-gold" />
-              <span>7 Core Energy Blocks Cleared</span>
+              <Users className="w-5 h-5 text-gold" />
+              <span className="font-medium">Live with Ken Franceschi</span>
             </div>
           </div>
             </div>
