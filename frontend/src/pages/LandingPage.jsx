@@ -665,23 +665,23 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 7: Blog & YouTube */}
-      <section id="blog" className="py-24 bg-warm-white">
+      {/* Section 7: Resources - YouTube & Blog */}
+      <section id="resources" className="py-24 bg-warm-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-block mb-4 text-sage font-semibold text-sm tracking-wider uppercase">
+            <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">
               Resources & Insights
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight" 
+            <h2 className="text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" 
                 style={{ fontFamily: 'Playfair Display' }}>
-              Explore My Latest<br />Insights & Transmissions
+              Channeled Wisdom &<br />Soul Mission Insights
             </h2>
           </div>
 
-          {/* Blog Posts */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-navy mb-8" style={{ fontFamily: 'Playfair Display' }}>
-              Latest from the Blog
+          {/* YouTube Videos - MOVED TO TOP */}
+          <div className="mb-20">
+            <h3 className="text-3xl font-bold text-navy mb-10" style={{ fontFamily: 'Playfair Display' }}>
+              Latest YouTube Channeled Transmissions
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
               {blogPosts.map((post) => (
