@@ -66,13 +66,12 @@ const LandingPage = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            {/* Placeholder for logo - Ken to provide actual logo */}
-            <div className="w-14 h-14 bg-gradient-to-br from-sage to-gold rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-2xl" style={{ fontFamily: 'Playfair Display' }}>SC</span>
-            </div>
-            <div className="text-3xl font-bold text-navy" style={{ fontFamily: 'Playfair Display' }}>
-              Souls Circle
-            </div>
+            {/* Souls Circle Logo */}
+            <img
+              src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/oxadoz01_sclogo.png"
+              alt="Souls Circle"
+              className="h-16 w-auto"
+            />
           </div>
           <div className="hidden md:flex items-center gap-8">
             {navigationLinks.map((link) => (
