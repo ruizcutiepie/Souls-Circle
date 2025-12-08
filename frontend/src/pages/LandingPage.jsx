@@ -202,39 +202,57 @@ const LandingPage = () => {
             </div>
 
             <div className="order-1 md:order-2">
-              <div className="relative">
-                {/* Ken's Professional Photos Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300">
-                    <img
-                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/2lhp2855_20250411_083914.jpg"
-                      alt="Ken - Soul Activator"
-                      className="w-full h-64 object-cover"
-                    />
-                  </div>
-                  <div className="rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300">
-                    <img
-                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/iw5f617e_20250411_083912.jpg"
-                      alt="Ken - Energy Healer"
-                      className="w-full h-64 object-cover"
-                    />
-                  </div>
-                </div>
-                
-                {/* Video Placeholder with Ken's photo */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
+              <div className="space-y-6">
+                {/* Main featured image with video overlay */}
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl group cursor-pointer">
                   <img
-                    src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/0n2iq7gi_20250411_083855.jpg"
-                    alt="Ken - The Ascension Activator Story"
-                    className="w-full h-96 object-cover"
+                    src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/j048tym4_20250410_193334.jpg"
+                    alt="Ken - The Ascension Activator"
+                    className="w-full h-[400px] object-cover"
                   />
-                  <div className="absolute inset-0 bg-navy/40 group-hover:bg-navy/30 transition-all duration-300 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/20 to-transparent group-hover:from-navy/50 transition-all duration-300"></div>
+                  
+                  {/* Play button for video */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 bg-gold/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-gold transition-all duration-300 shadow-xl">
                       <Play className="w-8 h-8 text-navy ml-1" />
                     </div>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-navy/90 to-transparent">
-                    <p className="text-white text-sm font-medium">Watch: The Souls Circle Journey with Ken</p>
+                  
+                  {/* Caption integrated naturally */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+                      <p className="text-white font-semibold text-base mb-1">My Journey of Transformation</p>
+                      <p className="text-white/80 text-sm">Watch how I discovered the path to helping empaths activate their true power</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Secondary photos in elegant card layout */}
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="relative rounded-2xl overflow-hidden shadow-lg group/card">
+                    <img
+                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/2lhp2855_20250411_083914.jpg"
+                      alt="Ken - Channeling Session"
+                      className="w-full h-32 object-cover group-hover/card:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div className="relative rounded-2xl overflow-hidden shadow-lg group/card">
+                    <img
+                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/iw5f617e_20250411_083912.jpg"
+                      alt="Ken - Energy Work"
+                      className="w-full h-32 object-cover group-hover/card:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-sage/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div className="relative rounded-2xl overflow-hidden shadow-lg group/card">
+                    <img
+                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/0n2iq7gi_20250411_083855.jpg"
+                      alt="Ken - Soul Activation"
+                      className="w-full h-32 object-cover group-hover/card:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gold/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
 
