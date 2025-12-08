@@ -90,14 +90,14 @@ const LandingPage = () => {
 
       {/* Section 1: Hero/Hook */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-warm-white">
-        {/* Background Image with Overlay */}
+        {/* Background Image with Ken Speaking - Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1551678843-b1dc560f1688?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwxfHxzcGlyaXR1YWwlMjBlbXBvd2VybWVudHxlbnwwfHx8fDE3NTk5NTgzMTd8MA&ixlib=rb-4.1.0&q=85"
-            alt="Spiritual Empowerment"
-            className="w-full h-full object-cover opacity-15"
+            src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/aat5gqms_20250411_083912%20%281%29.jpg"
+            alt="Ken Franceschi"
+            className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-warm-white/90 via-warm-white/70 to-warm-white"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-warm-white/95 via-warm-white/85 to-warm-white/70"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
