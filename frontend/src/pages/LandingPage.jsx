@@ -133,7 +133,7 @@ const LandingPage = () => {
             clear the final 7 energy blocks, embody your soul's essence, and activate your mission.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" 
+          <div className="flex flex-col sm:flex-row items-center md:justify-start justify-center gap-4 animate-fade-in-up" 
                style={{ animationDelay: '0.4s' }}>
             <Button 
               size="lg" 
@@ -145,7 +145,7 @@ const LandingPage = () => {
             </Button>
           </div>
 
-          <div className="mt-12 flex items-center justify-center gap-8 text-sm text-charcoal/70 animate-fade-in-up" 
+          <div className="mt-12 flex items-center md:justify-start justify-center gap-8 text-sm text-charcoal/70 animate-fade-in-up" 
                style={{ animationDelay: '0.6s' }}>
             <div className="flex items-center gap-2">
               <Heart className="w-4 h-4 text-sage" />
@@ -154,6 +154,8 @@ const LandingPage = () => {
             <div className="flex items-center gap-2">
               <Zap className="w-4 h-4 text-gold" />
               <span>7 Core Energy Blocks Cleared</span>
+            </div>
+          </div>
             </div>
           </div>
         </div>
