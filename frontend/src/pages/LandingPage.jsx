@@ -678,6 +678,11 @@ const LandingPage = () => {
             </h2>
           </div>
 
+          {/* YouTube Videos */}
+          <div>
+            <h3 className="text-2xl font-bold text-navy mb-8" style={{ fontFamily: 'Playfair Display' }}>
+              Latest YouTube Transmissions
+            </h3>
             <div className="grid md:grid-cols-3 gap-8">
               {youtubVideos.map((video) => (
                 <Card key={video.id} className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden">
