@@ -286,25 +286,27 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 3: Workshop Funnel */}
-      <section id="workshop" className="py-24 bg-navy text-white relative overflow-hidden">
+      {/* Section 3: Challenge */}
+      <section id="challenge" className="py-24 bg-navy text-white relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-sage/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <div className="inline-block mb-4 text-gold font-semibold text-sm tracking-wider uppercase">
-              Free Workshop
+          <div className="text-center mb-16">
+            <div className="inline-block mb-6 text-gold font-bold text-base tracking-wider uppercase">
+              Free 3-Day Live Challenge
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" 
+            <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight" 
                 style={{ fontFamily: 'Playfair Display' }}>
-              Ready to Clear What's Holding You Back?<br />
-              <span className="text-sage">Permanently?</span>
+              Mission Block Clarity<br />
+              <span className="text-gold">3-Day Challenge</span>
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-              Join the <span className="font-semibold text-gold">7 Energy Blocks Workshop</span> and discover 
-              the hidden patterns keeping you from your true power—then learn exactly how to clear them for good.
+            <p className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-medium mb-4">
+              Discover how the unresolved <span className="font-bold text-gold">Soul Blueprint</span> is stopping you from completing your mission to your greatest potential.
+            </p>
+            <p className="text-xl text-gold font-bold">
+              December 15-17th, 2025 | 12:00 PM EST | LIVE with Ken Franceschi
             </p>
           </div>
 
