@@ -122,23 +122,22 @@ const LandingPage = () => {
 
             {/* Right side - Text Content */}
             <div className="order-1 md:order-2 text-center md:text-left">
-          <div className="inline-block mb-6 animate-fade-in">
-            <div className="flex items-center gap-2 text-sage px-4 py-2 rounded-full bg-sage/10 backdrop-blur-sm">
-              <Star className="w-4 h-4" />
-              <span className="text-sm font-medium">For Empaths Ready to Activate Their True Power</span>
+          <div className="inline-block mb-8 animate-fade-in">
+            <div className="flex items-center gap-2 text-sage px-6 py-3 rounded-full bg-sage/10 backdrop-blur-sm">
+              <Star className="w-5 h-5" />
+              <span className="text-base font-medium">For Spiritual Entrepreneurs & Practitioners</span>
             </div>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-navy mb-6 leading-tight animate-fade-in-up" 
+          <h1 className="text-6xl md:text-8xl font-bold text-navy mb-8 leading-tight animate-fade-in-up" 
               style={{ fontFamily: 'Playfair Display' }}>
-            For the Empath Who's Done the Work,<br />
-            <span className="text-sage">But Still Feels Disconnected from Their Power</span>
+            Feel Called to Embody Your Full Power<br />
+            <span className="text-sage">And Complete Your Soul Mission?</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-charcoal mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" 
+          <p className="text-2xl md:text-3xl text-charcoal mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up font-medium" 
              style={{ animationDelay: '0.2s' }}>
-            As <span className="font-semibold text-gold">The Ascension Activator</span> at <span className="font-semibold text-navy">Souls Circle</span>, I use channeled methods to help you 
-            clear the final 7 energy blocks, embody your soul's essence, and activate your mission.
+            Discover how the unresolved <span className="font-bold text-navy">Soul Blueprint</span> is stopping you from completing your mission to your greatest potential.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center md:justify-start justify-center gap-4 animate-fade-in-up" 
