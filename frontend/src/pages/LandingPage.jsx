@@ -64,9 +64,15 @@ const LandingPage = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-xl font-bold text-navy" style={{ fontFamily: 'Playfair Display' }}>
-            Souls Circle
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            {/* Placeholder for logo - Ken to provide actual logo */}
+            <div className="w-14 h-14 bg-gradient-to-br from-sage to-gold rounded-full flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-2xl" style={{ fontFamily: 'Playfair Display' }}>SC</span>
+            </div>
+            <div className="text-3xl font-bold text-navy" style={{ fontFamily: 'Playfair Display' }}>
+              Souls Circle
+            </div>
           </div>
           <div className="hidden md:flex items-center gap-8">
             {navigationLinks.map((link) => (
