@@ -79,7 +79,7 @@ const LandingPage = () => {
               <button
                 key={link.label}
                 onClick={() => scrollToSection(link.href)}
-                className="text-sm font-medium text-charcoal hover:text-gold transition-colors duration-300"
+                className="text-base font-semibold text-navy hover:text-gold transition-colors duration-300"
               >
                 {link.label}
               </button>
