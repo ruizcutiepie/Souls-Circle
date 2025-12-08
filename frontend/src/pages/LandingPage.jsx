@@ -95,20 +95,28 @@ const LandingPage = () => {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left side - Ken's Photo */}
-            <div className="order-2 md:order-1 flex justify-center">
-              <div className="relative">
-                <div className="w-80 h-80 rounded-full overflow-hidden border-8 border-sage/30 shadow-2xl transform hover:scale-105 transition-all duration-500">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Left side - Ken's Photo with Natural Integration */}
+            <div className="order-2 md:order-1">
+              <div className="relative group">
+                {/* Main photo with subtle frame */}
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                   <img
                     src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/v1jts1vn_20250311_130413.jpg"
                     alt="Ken - The Ascension Activator"
-                    className="w-full h-full object-cover"
+                    className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-all duration-700"
                   />
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/20 via-transparent to-transparent"></div>
+                  
+                  {/* Floating badge */}
+                  <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
+                    <p className="text-navy font-semibold text-sm">Ken - The Ascension Activator</p>
+                  </div>
                 </div>
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-gold/20 rounded-full blur-2xl"></div>
-                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-sage/20 rounded-full blur-2xl"></div>
+                
+                {/* Decorative accent bar */}
+                <div className="absolute -bottom-4 left-8 right-8 h-2 bg-gradient-to-r from-sage via-gold to-sage rounded-full shadow-lg"></div>
               </div>
             </div>
 
