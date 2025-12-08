@@ -623,26 +623,26 @@ const LandingPage = () => {
                   'Dedicated community space to connect with your soul family'
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <ChevronRight className="w-4 h-4 text-gold" />
+                    <div className="w-7 h-7 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <ChevronRight className="w-5 h-5 text-gold" />
                     </div>
-                    <span className="text-white/90">{item}</span>
+                    <span className="text-white/90 text-lg">{item}</span>
                   </div>
                 ))}
               </div>
 
               <Button 
                 size="lg" 
-                className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 onClick={() => window.location.href = externalLinks.soulCircleFamily}
               >
-                Join The Souls Circle Family
-                <ArrowRight className="ml-2 w-5 h-5" />
+                Join The Family - $44/Month
+                <ArrowRight className="ml-2 w-6 h-6" />
               </Button>
             </div>
 
             <div className="space-y-6">
-              {testimonials.slice(1).map((testimonial) => (
+              {testimonials.slice(1, 3).map((testimonial) => (
                 <div key={testimonial.id} className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                   <p className="text-white/90 italic mb-4 leading-relaxed">
                     "{testimonial.quote}"
