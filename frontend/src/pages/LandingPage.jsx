@@ -195,11 +195,29 @@ const LandingPage = () => {
 
             <div className="order-1 md:order-2">
               <div className="relative">
-                {/* Video Placeholder */}
+                {/* Ken's Professional Photos Grid */}
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <img
+                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/2lhp2855_20250411_083914.jpg"
+                      alt="Ken - Soul Activator"
+                      className="w-full h-64 object-cover"
+                    />
+                  </div>
+                  <div className="rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <img
+                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/iw5f617e_20250411_083912.jpg"
+                      alt="Ken - Energy Healer"
+                      className="w-full h-64 object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Video Placeholder with Ken's photo */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
                   <img
-                    src="https://images.unsplash.com/photo-1759347115771-b9bf87e1dce1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHw0fHxzcGlyaXR1YWwlMjBjb21tdW5pdHl8ZW58MHx8fHwxNzU5OTU4MzMxfDA&ixlib=rb-4.1.0&q=85"
-                    alt="The Ascension Activator Story"
+                    src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/0n2iq7gi_20250411_083855.jpg"
+                    alt="Ken - The Ascension Activator Story"
                     className="w-full h-96 object-cover"
                   />
                   <div className="absolute inset-0 bg-navy/40 group-hover:bg-navy/30 transition-all duration-300 flex items-center justify-center">
@@ -208,7 +226,7 @@ const LandingPage = () => {
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-navy/90 to-transparent">
-                    <p className="text-white text-sm font-medium">Watch: The Souls Circle Journey</p>
+                    <p className="text-white text-sm font-medium">Watch: The Souls Circle Journey with Ken</p>
                   </div>
                 </div>
 
