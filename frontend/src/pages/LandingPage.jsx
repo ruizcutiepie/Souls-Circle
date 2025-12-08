@@ -790,23 +790,26 @@ const LandingPage = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/95 to-navy"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" 
+        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight" 
               style={{ fontFamily: 'Playfair Display' }}>
-            Your Soul's Mission Is Waiting
+            Ready to Resolve Your Soul Blueprint<br />
+            <span className="text-gold">And Embody Your Mission?</span>
           </h2>
-          <p className="text-xl text-white/80 mb-12 leading-relaxed">
-            Stop spinning in the never-ending healing cycle. Clear the final blocks, 
-            activate your power, and step into your purpose.
+          <p className="text-2xl text-white/90 mb-12 leading-relaxed font-medium max-w-4xl mx-auto">
+            Join the Mission Block Clarity Challenge and discover the advanced energetic patterns keeping you from your highest potential.
           </p>
           <Button 
             size="lg" 
-            className="bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
-            onClick={() => window.location.href = externalLinks.workshopRegistration}
+            className="bg-gold hover:bg-gold/90 text-navy px-12 py-8 text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+            onClick={() => window.location.href = externalLinks.challengeRegistration}
           >
-            Join the 7 Energy Blocks Workshop
-            <ArrowRight className="ml-2 w-6 h-6" />
+            Join the FREE 3-Day Challenge
+            <ArrowRight className="ml-3 w-7 h-7" />
           </Button>
+          <p className="text-white/70 mt-8 text-lg font-medium">
+            December 15-17, 2025 | 12:00 PM EST | Live with Ken
+          </p>
         </div>
       </section>
 
