@@ -178,29 +178,36 @@ const LandingPage = () => {
 
             <div className="order-1 md:order-2">
               <div className="space-y-6">
-                {/* Main featured image with video overlay */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl group cursor-pointer">
-                  <img
-                    src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/j048tym4_20250410_193334.jpg"
-                    alt="Ken - The Ascension Activator"
-                    className="w-full h-[400px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/20 to-transparent group-hover:from-navy/50 transition-all duration-300"></div>
-                  
-                  {/* Play button for video */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-gold/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-gold transition-all duration-300 shadow-xl">
-                      <Play className="w-8 h-8 text-navy ml-1" />
+                {/* Main featured image - Ken's framed photo from hero */}
+                <div className="relative group">
+                  {/* Main photo with subtle frame */}
+                  <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                    <img
+                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/v1jts1vn_20250311_130413.jpg"
+                      alt="Ken - The Ascension Activator"
+                      className="w-full h-[450px] object-cover transform group-hover:scale-105 transition-all duration-700"
+                    />
+                    {/* Subtle gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent"></div>
+                    
+                    {/* Video play button overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center cursor-pointer">
+                      <div className="w-20 h-20 bg-gold/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-gold transition-all duration-300 shadow-xl">
+                        <Play className="w-8 h-8 text-navy ml-1" />
+                      </div>
+                    </div>
+                    
+                    {/* Caption for video */}
+                    <div className="absolute bottom-0 left-0 right-0 p-8">
+                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+                        <p className="text-white font-semibold text-lg mb-1">My Journey of Transformation</p>
+                        <p className="text-white/90 text-sm">Watch how I discovered the path to helping spiritual entrepreneurs embody their soul mission</p>
+                      </div>
                     </div>
                   </div>
                   
-                  {/* Caption integrated naturally */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                      <p className="text-white font-semibold text-base mb-1">My Journey of Transformation</p>
-                      <p className="text-white/80 text-sm">Watch how I discovered the path to helping empaths activate their true power</p>
-                    </div>
-                  </div>
+                  {/* Decorative accent bar */}
+                  <div className="absolute -bottom-3 left-8 right-8 h-2 bg-gradient-to-r from-sage via-gold to-sage rounded-full shadow-lg"></div>
                 </div>
                 
                 {/* Secondary photos in elegant card layout */}
