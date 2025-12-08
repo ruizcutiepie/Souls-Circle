@@ -310,70 +310,107 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/10">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div>
-                <h3 className="text-2xl font-bold mb-6" style={{ fontFamily: 'Playfair Display' }}>
-                  In This Free Workshop, You'll Discover:
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {/* Day 1 */}
+            <Card className="bg-white/10 backdrop-blur-sm border-2 border-gold/30 text-white p-8">
+              <div className="text-center mb-6">
+                <div className="text-6xl font-bold text-gold mb-2" style={{ fontFamily: 'Playfair Display' }}>01</div>
+                <div className="text-gold font-bold text-sm mb-2">12:00 - 12:30 PM EST</div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display' }}>
+                  How the Soul Blueprint Stops You
                 </h3>
-                <ul className="space-y-4">
-                  {[
-                    'The 7 core energy blocks that traditional healing misses',
-                    'Why you keep attracting the same patterns despite all your inner work',
-                    'How to identify which blocks are active in YOUR energy field',
-                    'The exact channeled method I use to clear blocks permanently',
-                    'Your personalized roadmap to full soul activation'
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
-                        <ChevronRight className="w-4 h-4 text-gold" />
-                      </div>
-                      <span className="text-white/90">{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>What is the Soul Blueprint</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Why you feel blocked from your mission</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Channelled insights about planetary shifts</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Why traditional methods can't fix the root problem</span>
+                </li>
+              </ul>
+            </Card>
 
-              <div className="bg-white rounded-xl p-8 text-charcoal">
-                <div className="text-center mb-6">
-                  <div className="inline-block px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-semibold mb-4">
-                    Limited Seats Available
-                  </div>
-                  <h4 className="text-2xl font-bold text-navy mb-2" style={{ fontFamily: 'Playfair Display' }}>
-                    Your Transformation Starts Here
-                  </h4>
-                  <p className="text-charcoal/70">Join thousands of empaths who've cleared their blocks</p>
-                </div>
-
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-center gap-3 text-sm">
-                    <Calendar className="w-5 h-5 text-sage" />
-                    <span>Next Workshop: <span className="font-semibold">March 20, 2024</span></span>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm">
-                    <Clock className="w-5 h-5 text-sage" />
-                    <span>Duration: <span className="font-semibold">90 Minutes</span></span>
-                  </div>
-                  <div className="flex items-center gap-3 text-sm">
-                    <Users className="w-5 h-5 text-sage" />
-                    <span>Format: <span className="font-semibold">Live Online</span></span>
-                  </div>
-                </div>
-
-                <Button 
-                  size="lg" 
-                  className="w-full bg-navy hover:bg-navy/90 text-white py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                  onClick={() => window.location.href = externalLinks.workshopRegistration}
-                >
-                  Save My Seat in the Workshop
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-
-                <p className="text-xs text-center text-charcoal/60 mt-4">
-                  This workshop is the gateway to the VTS Program
-                </p>
+            {/* Day 2 */}
+            <Card className="bg-white/10 backdrop-blur-sm border-2 border-gold/30 text-white p-8">
+              <div className="text-center mb-6">
+                <div className="text-6xl font-bold text-gold mb-2" style={{ fontFamily: 'Playfair Display' }}>02</div>
+                <div className="text-gold font-bold text-sm mb-2">12:00 - 12:30 PM EST</div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display' }}>
+                  What Your Higher Self Has to Tell You
+                </h3>
               </div>
-            </div>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Live channeled activation experience</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Receive divine wisdom about your path</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Embody the "readiness" for your next step</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Connect with your soul's mission clarity</span>
+                </li>
+              </ul>
+            </Card>
+
+            {/* Day 3 */}
+            <Card className="bg-white/10 backdrop-blur-sm border-2 border-gold/30 text-white p-8">
+              <div className="text-center mb-6">
+                <div className="text-6xl font-bold text-gold mb-2" style={{ fontFamily: 'Playfair Display' }}>03</div>
+                <div className="text-gold font-bold text-sm mb-2">12:00 - 1:00 PM EST</div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display' }}>
+                  How to Resolve the Blueprint
+                </h3>
+              </div>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Advanced energetic patterns most teachers don't discuss</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Quantum-level blueprint resolution</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Clear path forward for your mission</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
+                  <span>Invitation to begin your transformation journey</span>
+                </li>
+              </ul>
+            </Card>
+          </div>
+
+          <div className="text-center">
+            <Button 
+              size="lg" 
+              className="bg-gold hover:bg-gold/90 text-navy px-12 py-8 text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+              onClick={() => window.location.href = externalLinks.challengeRegistration}
+            >
+              Join the FREE 3-Day Challenge
+              <ArrowRight className="ml-3 w-7 h-7" />
+            </Button>
+            <p className="text-white/70 mt-6 text-lg">
+              Limited spots available - Reserve your seat now
+            </p>
           </div>
         </div>
       </section>
