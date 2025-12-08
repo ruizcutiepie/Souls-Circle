@@ -66,11 +66,11 @@ const LandingPage = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            {/* Souls Circle Logo */}
+            {/* Souls Circle Logo - Transparent */}
             <img
-              src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/oxadoz01_sclogo.png"
+              src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/repyviae_sclogo-removebg-preview.png"
               alt="Souls Circle"
-              className="h-16 w-auto"
+              className="h-16 w-auto drop-shadow-lg"
             />
           </div>
           <div className="hidden md:flex items-center gap-8">
