@@ -3,24 +3,38 @@
 export const testimonials = [
   {
     id: 1,
-    name: "[Ken to provide]",
-    role: "Spiritual Entrepreneur",
-    quote: "[Ken will provide actual testimonial from funnel]",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop"
+    name: "Family Member",
+    role: "Spiritual Practitioner",
+    quote: "I always enjoy coming to these events because every time I can feel my vibration rising and rising. I always feel better after these events.",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/bi5bmxPCbyu9yEcodZf5/media/684dc061fc74bd2861d3a117.jpeg"
   },
   {
     id: 2,
-    name: "[Ken to provide]",
-    role: "Spiritual Practitioner",
-    quote: "[Ken will provide actual testimonial from funnel]",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop"
+    name: "Community Member",
+    role: "Lightworker",
+    quote: "When I joined the community I immediately felt a sense of belonging, and then I know I found my tribe! Ken, you have a voice meant for the work that you do. I've never felt so relaxed. It's like I can feel the love, warmth, and safety behind your words. You are a blessing of bright light for everyone that comes across your path.",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/bi5bmxPCbyu9yEcodZf5/media/67f19a130e32027bde9273a7.png"
   },
   {
     id: 3,
-    name: "[Ken to provide]",
-    role: "Lightworker & Coach",
-    quote: "[Ken will provide actual testimonial from funnel]",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop"
+    name: "Family Member",
+    role: "Soul Family",
+    quote: "I was divinely guided to one of Ken's groups a couple months ago and felt called to join this community and connect with more of my soul family. Huge thank you to Ken for creating this community and sharing your beautiful gifts for all of us. I'm overwhelmed with Joy and Gratitude to have this space available for support!",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/bi5bmxPCbyu9yEcodZf5/media/684dbfd7f5cd584041bd09e7.jpeg"
+  },
+  {
+    id: 4,
+    name: "Family Member",
+    role: "Spiritual Seeker",
+    quote: "The routine has changed the way I go through the day and sleep at night. I wake up an hour before my alarm goes off every morning. I have been more an observer than ever before. I have the most balance and acceptance than ever before.",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/bi5bmxPCbyu9yEcodZf5/media/684dba1dba79ef389f958501.jpeg"
+  },
+  {
+    id: 5,
+    name: "Family Member",
+    role: "Energy Worker",
+    quote: "The video was amazing and really allowed my built up emotions to come out from my body. It was so incredibly powerful. The day was busy and stressful but I honestly was an observer and non-reactive. I ended the day feeling so proud of myself.",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/bi5bmxPCbyu9yEcodZf5/media/684db988f5cd58cc89bcff45.jpeg"
   }
 ];
 
