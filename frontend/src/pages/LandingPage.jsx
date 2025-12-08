@@ -99,34 +99,7 @@ const LandingPage = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-warm-white/95 via-warm-white/85 to-warm-white/70"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Left side - Ken's Photo with Natural Integration */}
-            <div className="order-2 md:order-1">
-              <div className="relative group">
-                {/* Main photo with subtle frame */}
-                <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                  <img
-                    src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/v1jts1vn_20250311_130413.jpg"
-                    alt="Ken - The Ascension Activator"
-                    className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-all duration-700"
-                  />
-                  {/* Subtle gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/20 via-transparent to-transparent"></div>
-                  
-                  {/* Floating badge */}
-                  <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
-                    <p className="text-navy font-semibold text-sm">Ken - The Ascension Activator</p>
-                  </div>
-                </div>
-                
-                {/* Decorative accent bar */}
-                <div className="absolute -bottom-4 left-8 right-8 h-2 bg-gradient-to-r from-sage via-gold to-sage rounded-full shadow-lg"></div>
-              </div>
-            </div>
-
-            {/* Right side - Text Content */}
-            <div className="order-1 md:order-2 text-center md:text-left">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 text-center">
           <div className="inline-block mb-8 animate-fade-in">
             <div className="flex items-center gap-2 text-sage px-6 py-3 rounded-full bg-sage/10 backdrop-blur-sm">
               <Star className="w-5 h-5" />
