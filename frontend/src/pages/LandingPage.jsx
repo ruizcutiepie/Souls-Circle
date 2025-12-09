@@ -117,28 +117,33 @@ const LandingPage = () => {
             and access the intuitive clarity needed to make their greatest impact.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" 
-               style={{ animationDelay: '0.4s' }}>
-            <Button 
-              size="lg" 
-              className="bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => window.location.href = externalLinks.challengeRegistration}
-            >
-              Join the FREE 3-Day Challenge
-              <ArrowRight className="ml-2 w-6 h-6" />
-            </Button>
+          {/* Social Proof Badge */}
+          <div className="inline-block mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <div className="bg-white/80 backdrop-blur-sm px-8 py-4 rounded-full border-2 border-sage/20 shadow-lg">
+              <p className="text-charcoal/80 text-lg">
+                <span className="font-bold text-navy text-xl">Over 250+</span> Purpose-Driven Souls Impacted
+              </p>
+            </div>
           </div>
 
-          <div className="mt-12 flex items-center justify-center gap-8 text-base text-charcoal/70 animate-fade-in-up" 
+          {/* CTA Box */}
+          <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border-2 border-gold/20 animate-fade-in-up" 
                style={{ animationDelay: '0.6s' }}>
-            <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-sage" />
-              <span className="font-medium">December 15-17, 2025</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="w-5 h-5 text-gold" />
-              <span className="font-medium">Live with Ken Franceschi</span>
-            </div>
+            <h3 className="text-3xl font-bold text-navy mb-4" style={{ fontFamily: 'Playfair Display' }}>
+              Connect to the Power Within in 15 Minutes
+            </h3>
+            <p className="text-lg text-charcoal/80 mb-6 leading-relaxed">
+              Don't settle for generic tools. Take the 30-second quiz to receive a premium Activation Meditation 
+              tailored to your goals—the same caliber of tool my private clients use.
+            </p>
+            <Button 
+              size="lg" 
+              className="w-full bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              onClick={() => window.location.href = externalLinks.challengeRegistration}
+            >
+              GET MY FREE TAILORED MEDITATION
+              <ArrowRight className="ml-2 w-6 h-6" />
+            </Button>
           </div>
         </div>
       </section>
