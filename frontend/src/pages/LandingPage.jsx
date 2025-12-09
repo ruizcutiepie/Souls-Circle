@@ -105,22 +105,16 @@ const LandingPage = () => {
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 text-center">
-          <div className="inline-block mb-8 animate-fade-in">
-            <div className="flex items-center gap-2 text-sage px-6 py-3 rounded-full bg-sage/10 backdrop-blur-sm">
-              <Star className="w-5 h-5" />
-              <span className="text-base font-medium">For Spiritual Entrepreneurs & Practitioners</span>
-            </div>
-          </div>
-
           <h1 className="text-6xl md:text-8xl font-bold text-navy mb-8 leading-tight animate-fade-in-up" 
               style={{ fontFamily: 'Playfair Display' }}>
-            Feel Called to Embody Your Full Power<br />
-            <span style={{ color: '#6B8F71' }}>And Complete Your Soul Mission?</span>
+            You've Done The Work.<br />
+            <span style={{ color: '#6B8F71' }}>Now Step Into Your Full Mission.</span>
           </h1>
 
-          <p className="text-2xl md:text-3xl text-charcoal mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up font-medium" 
+          <p className="text-2xl md:text-3xl text-charcoal mb-12 max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium" 
              style={{ animationDelay: '0.2s' }}>
-            Discover how the unresolved <span className="font-bold text-navy">Soul Blueprint</span> is stopping you from completing your mission to your greatest potential.
+            Helping successful spiritual entrepreneurs transmute their final energetic blocks, unlock their full power, 
+            and access the intuitive clarity needed to make their greatest impact.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" 
