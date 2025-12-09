@@ -164,7 +164,7 @@ export const socialLinks = [
 ];
 
 export const externalLinks = {
-  challengeRegistration: "https://hello.soulscircle.com/challenge-registration",
+  challengeRegistration: "https://hello.soulscircle.com/challenge-registration-website",
   oneOnOneMentorship: "https://yourfunnel.com/1-1-mentorship",
   upcomingEvents: "https://yourfunnel.com/events",
   soulCircleFamily: "https://hello.soulscircle.com/join-the-family",
