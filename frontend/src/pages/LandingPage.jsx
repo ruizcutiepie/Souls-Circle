@@ -93,13 +93,13 @@ const LandingPage = () => {
 
       {/* Section 1: Hero/Hook */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-warm-white">
-        {/* Background Image with Ken Speaking - Zoomed In */}
+        {/* Background Image with Ken Speaking */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/aat5gqms_20250411_083912%20%281%29.jpg"
             alt="Ken Franceschi"
-            className="w-full h-full object-cover opacity-25 scale-125"
-            style={{ objectPosition: 'center 30%' }}
+            className="w-full h-full object-cover opacity-25 scale-110"
+            style={{ objectPosition: 'center 35%' }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-warm-white/95 via-warm-white/85 to-warm-white/70"></div>
         </div>
