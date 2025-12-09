@@ -253,34 +253,6 @@ const LandingPage = () => {
                   {/* Decorative accent bar */}
                   <div className="absolute -bottom-3 left-8 right-8 h-2 bg-gradient-to-r from-sage via-gold to-sage rounded-full shadow-lg"></div>
                 </div>
-                
-                {/* Secondary photos in elegant card layout */}
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg group/card">
-                    <img
-                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/2lhp2855_20250411_083914.jpg"
-                      alt="Ken - Channeling Session"
-                      className="w-full h-32 object-cover group-hover/card:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg group/card">
-                    <img
-                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/iw5f617e_20250411_083912.jpg"
-                      alt="Ken - Energy Work"
-                      className="w-full h-32 object-cover group-hover/card:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-sage/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg group/card">
-                    <img
-                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/0n2iq7gi_20250411_083855.jpg"
-                      alt="Ken - Soul Activation"
-                      className="w-full h-32 object-cover group-hover/card:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gold/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                </div>
 
                 {/* Testimonial Card */}
                 <div className="mt-8 bg-warm-white p-6 rounded-xl shadow-lg border-l-4 border-gold">
