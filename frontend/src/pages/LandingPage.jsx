@@ -153,29 +153,51 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="order-2 md:order-1">
-              <div className="inline-block mb-4 text-sage font-semibold text-sm tracking-wider uppercase">
+              <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">
                 My Story
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight" 
+              <h2 className="text-4xl md:text-6xl font-bold text-navy mb-8 leading-tight" 
                   style={{ fontFamily: 'Playfair Display' }}>
-                I Know the Exhaustion of a<br />Never-Ending Healing Journey
+                I know what it's like to do<br />"all the right things" and still feel a missing piece.
               </h2>
-              <div className="space-y-4 text-lg text-charcoal leading-relaxed">
+              <div className="space-y-5 text-lg text-charcoal leading-relaxed">
                 <p>
-                  For years, I thought I was broken. I tried every healing modality, read every self-help book, 
-                  attended countless workshops. On the surface, I was doing everything right.
+                  My journey started in the clinical field. I was driven by a desire to help, but I quickly realized 
+                  we were often treating symptoms rather than root causes.
                 </p>
                 <p>
-                  But deep down, I still felt disconnected. Like there was an invisible wall between me and my true power. 
-                  Between me and my purpose. Between who I was and who I knew I was meant to be.
+                  That logical world was shattered when a chance encounter with a medium triggered trauma, memories and 
+                  spiritual abilities I had suppressed since a child. It launched me onto a new path—mastering Reiki, 
+                  mediumship, and channeling.
                 </p>
                 <p>
-                  That's when I discovered the truth: <span className="font-semibold text-navy">traditional healing methods 
-                  don't touch the 7 core energetic blocks that keep empaths stuck.</span>
+                  I became an established practitioner. I was helping people. I was doing the deep inner work, keeping 
+                  my vibration high, and consuming all the spiritual & self development books and courses I could get my hands on.
+                </p>
+                <p className="font-semibold text-navy">
+                  But then, life threw me a curveball.
                 </p>
                 <p>
-                  Through channeled guidance and deep energetic work, I finally broke free. And now, I help other empaths 
-                  do the same—clearing what's been holding them back and activating their soul's true mission.
+                  Despite doing everything "right," I experienced a major negative event that made no sense. It forced 
+                  me to ask the question that changed everything: <span className="italic font-semibold">"If I'm managing my 
+                  energy and mindset so perfectly, why is this happening?"</span>
+                </p>
+                <p>
+                  That question led me into years of hermiting and deep channeling the Akashic Records. I explored many 
+                  of my past lives and discovered something I'd never heard about. While I was "maintaining" my Energy Field, 
+                  my <span className="font-bold text-navy">Soul Blueprint</span> (my "source code") was still running an old story. 
+                  I was pouring pure water into a "rusty cup."
+                </p>
+                <p>
+                  Once I learned to resolve the Blueprint itself, the struggle dissolved. My intuition became crystal clear, 
+                  I stepped fully into my full authentic power and mission.
+                </p>
+                <p className="text-xl font-semibold text-navy">
+                  Now, I'm here to help you do the same.
+                </p>
+                <p>
+                  My mission is to create a <span className="font-semibold">Butterfly Effect</span>: by helping leaders like you 
+                  unlock your full power, we shift the consciousness of the entire planet together.
                 </p>
               </div>
             </div>
