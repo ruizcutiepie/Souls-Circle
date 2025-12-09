@@ -115,7 +115,7 @@ const LandingPage = () => {
           <h1 className="text-6xl md:text-8xl font-bold text-navy mb-8 leading-tight animate-fade-in-up" 
               style={{ fontFamily: 'Playfair Display' }}>
             Feel Called to Embody Your Full Power<br />
-            <span className="text-navy" style={{ color: '#2d5016' }}>And Complete Your Soul Mission?</span>
+            <span style={{ color: '#6B8F71' }}>And Complete Your Soul Mission?</span>
           </h1>
 
           <p className="text-2xl md:text-3xl text-charcoal mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up font-medium" 
