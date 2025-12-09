@@ -148,45 +148,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Social Proof Section */}
-      <section className="py-16 bg-white border-t border-b border-navy/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {/* Stat 1 */}
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-navy mb-2" style={{ fontFamily: 'Playfair Display' }}>
-                10,000+
-              </div>
-              <p className="text-lg text-charcoal/80 font-medium">Spiritual Entrepreneurs Guided</p>
-            </div>
-            
-            {/* Stat 2 */}
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-navy mb-2" style={{ fontFamily: 'Playfair Display' }}>
-                500+
-              </div>
-              <p className="text-lg text-charcoal/80 font-medium">Live Channeling Sessions</p>
-            </div>
-            
-            {/* Stat 3 */}
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-navy mb-2" style={{ fontFamily: 'Playfair Display' }}>
-                5+
-              </div>
-              <p className="text-lg text-charcoal/80 font-medium">Years of Spiritual Work</p>
-            </div>
-            
-            {/* Stat 4 */}
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-navy mb-2" style={{ fontFamily: 'Playfair Display' }}>
-                1000+
-              </div>
-              <p className="text-lg text-charcoal/80 font-medium">Soul Blueprints Resolved</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Section 2: Story/Connection */}
       <section id="story" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
