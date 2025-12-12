@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { 
-  BookOpen, 
-  Sparkles, 
-  Lightbulb, 
-  Calendar, 
-  Users, 
+import React, { useState, useEffect } from "react";
+import { Button } from "../components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
+import {
+  BookOpen,
+  Sparkles,
+  Lightbulb,
+  Calendar,
+  Users,
   ArrowRight,
   Play,
   Clock,
@@ -18,8 +24,8 @@ import {
   Facebook,
   Heart,
   Zap,
-  Star
-} from 'lucide-react';
+  Star,
+} from "lucide-react";
 import {
   testimonials,
   blogPosts,
@@ -28,8 +34,8 @@ import {
   oneOnOneServices,
   navigationLinks,
   socialLinks,
-  externalLinks
-} from '../data/mock';
+  externalLinks,
+} from "../data/mock";
 
 const iconMap = {
   BookOpen,
@@ -37,43 +43,43 @@ const iconMap = {
   Lightbulb,
   Instagram,
   Youtube,
-  Facebook
+  Facebook,
 };
 
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isStoryExpanded, setIsStoryExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <div className="landing-page">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-transparent'
-      }`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-md" : "bg-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            {/* Souls Circle Logo - Adjusts visibility on scroll */}
             <img
               src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/repyviae_sclogo-removebg-preview.png"
               alt="Souls Circle"
               className={`h-16 w-auto transition-all duration-300 ${
-                isScrolled 
-                  ? 'brightness-0 drop-shadow-md' 
-                  : 'drop-shadow-lg'
+                isScrolled ? "brightness-0 drop-shadow-md" : "drop-shadow-lg"
               }`}
             />
           </div>
@@ -91,170 +97,220 @@ const LandingPage = () => {
         </div>
       </nav>
 
-      {/* Section 1: Hero/Hook */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-warm-white">
-        {/* Background Image with Ken Speaking */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/aat5gqms_20250411_083912%20%281%29.jpg"
-            alt="Ken Franceschi"
-            className="w-full h-full object-cover opacity-25 scale-110"
-            style={{ objectPosition: 'center 35%' }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-warm-white/95 via-warm-white/85 to-warm-white/70"></div>
+      {/* Section 1: Hero with VIDEO background */}
+      <section
+        id="hero"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-warm-white"
+      >
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/aat5gqms_20250411_083912%20%281%29.jpg"
+          >
+            {/* Make sure this file exists in public/hero-background.mp4 */}
+            <source src="/hero-background.mp4" type="video/mp4" />
+          </video>
+          {/* Radial overlay for readability */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.55)_60%,rgba(0,0,0,0.7)_100%)] pointer-events-none" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 text-center">
-          <h1 className="text-6xl md:text-8xl font-bold text-navy mb-8 leading-tight animate-fade-in-up" 
-              style={{ fontFamily: 'Playfair Display' }}>
-            You've Done The Work.<br />
-            <span style={{ color: '#6B8F71' }}>Now Step Into Your Full Mission.</span>
+          <h1
+            className="text-6xl md:text-8xl font-bold mb-8 leading-tight animate-fade-in-up"
+            style={{ fontFamily: "Playfair Display", color: "#F9FAFB" }}
+          >
+            You&apos;ve Done The Work.
+            <br />
+            <span style={{ color: "#A3B8A2" }}>
+              Now Step Into Your Full Mission.
+            </span>
           </h1>
 
-          <p className="text-2xl md:text-3xl text-charcoal mb-12 max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium" 
-             style={{ animationDelay: '0.2s' }}>
-            Helping successful spiritual entrepreneurs transmute their final energetic blocks, unlock their full power, 
-            and access the intuitive clarity needed to make their greatest impact.
+          <p
+            className="text-2xl md:text-3xl mb-12 max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium"
+            style={{
+              animationDelay: "0.2s",
+              color: "rgba(249,250,251,0.9)",
+            }}
+          >
+            Helping successful spiritual entrepreneurs transmute their final
+            energetic blocks, unlock their full power, and access the intuitive
+            clarity needed to make their greatest impact.
           </p>
 
-          {/* Social Proof Badge */}
-          <div className="inline-block mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <div className="bg-white/80 backdrop-blur-sm px-8 py-4 rounded-full border-2 border-sage/20 shadow-lg">
-              <p className="text-charcoal/80 text-lg">
-                <span className="font-bold text-navy text-xl">Over 250+</span> Purpose-Driven Souls Impacted
+          {/* Social proof */}
+          <div
+            className="mx-auto mb-12 flex max-w-xl items-center gap-4 rounded-full bg-white/90 px-5 py-3 text-left shadow-lg backdrop-blur-sm animate-fade-in-up"
+            style={{ animationDelay: "0.4s" }}
+          >
+            <div className="flex -space-x-2">
+              <img
+                src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80"
+                alt="Community member"
+                className="h-9 w-9 rounded-full border-2 border-white object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80"
+                alt="Community member"
+                className="h-9 w-9 rounded-full border-2 border-white object-cover"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=200&q=80"
+                alt="Community member"
+                className="h-9 w-9 rounded-full border-2 border-white object-cover"
+              />
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-navy">
+                250+ Purpose-Driven Souls Impacted
+              </p>
+              <p className="text-xs text-charcoal/70">
+                Spiritual entrepreneurs, coaches and practitioners crossing
+                their next threshold.
               </p>
             </div>
           </div>
-
           {/* CTA Box */}
-          <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border-2 border-gold/20 animate-fade-in-up" 
-               style={{ animationDelay: '0.6s' }}>
-            <h3 className="text-3xl font-bold text-navy mb-4" style={{ fontFamily: 'Playfair Display' }}>
+          <div
+            className="max-w-3xl mx-auto rounded-[40px] border border-white/70 bg-slate-900/80 backdrop-blur-md p-10 shadow-2xl animate-fade-in-up"
+            style={{ animationDelay: "0.6s" }}
+          >
+            <h3
+              className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Connect to the Power Within in 15 Minutes
             </h3>
-            <p className="text-lg text-charcoal/80 mb-6 leading-relaxed">
-              Don't settle for generic tools. Take the 30-second quiz to receive a premium Activation Meditation 
-              tailored to your goals—the same caliber of tool my private clients use.
+            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
+              Don&apos;t settle for generic tools. Take the 30-second quiz to
+              receive a premium Activation Meditation tailored to your goals—
+              the same caliber of tool my private clients use.
             </p>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="w-full bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => window.location.href = externalLinks.challengeRegistration}
+              onClick={() =>
+                (window.location.href = externalLinks.challengeRegistration)
+              }
             >
               GET MY FREE TAILORED MEDITATION
               <ArrowRight className="ml-2 w-6 h-6" />
             </Button>
           </div>
+
         </div>
       </section>
 
-      {/* Section 2: Story/Connection */}
+      {/* Section 2: Story / Connection */}
       <section id="story" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">
-                My Story
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            {/* LEFT: photo + testimonial */}
+            <div className="order-1">
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                <img
+                  src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/v1jts1vn_20250311_130413.jpg"
+                  alt="Ken Franceschi"
+                  className="w-full h-[500px] object-cover"
+                />
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold text-navy mb-8 leading-tight" 
-                  style={{ fontFamily: 'Playfair Display' }}>
-                I know what it's like to do<br />"all the right things" and still feel a missing piece.
-              </h2>
-              <div className="space-y-5 text-lg text-charcoal leading-relaxed">
-                <p>
-                  My journey started in the clinical field. I was driven by a desire to help, but I quickly realized 
-                  we were often treating symptoms rather than root causes.
-                </p>
-                <p>
-                  That logical world was shattered when a chance encounter with a medium triggered trauma, memories and 
-                  spiritual abilities I had suppressed since a child. It launched me onto a new path—mastering Reiki, 
-                  mediumship, and channeling.
-                </p>
-                <p>
-                  I became an established practitioner. I was helping people. I was doing the deep inner work, keeping 
-                  my vibration high, and consuming all the spiritual & self development books and courses I could get my hands on.
-                </p>
-                <p className="font-semibold text-navy">
-                  But then, life threw me a curveball.
-                </p>
-                <p>
-                  Despite doing everything "right," I experienced a major negative event that made no sense. It forced 
-                  me to ask the question that changed everything: <span className="italic font-semibold">"If I'm managing my 
-                  energy and mindset so perfectly, why is this happening?"</span>
-                </p>
-                <p>
-                  That question led me into years of hermiting and deep channeling the Akashic Records. I explored many 
-                  of my past lives and discovered something I'd never heard about. While I was "maintaining" my Energy Field, 
-                  my <span className="font-bold text-navy">Soul Blueprint</span> (my "source code") was still running an old story. 
-                  I was pouring pure water into a "rusty cup."
-                </p>
-                <p>
-                  Once I learned to resolve the Blueprint itself, the struggle dissolved. My intuition became crystal clear, 
-                  I stepped fully into my full authentic power and mission.
-                </p>
-                <p className="text-xl font-semibold text-navy">
-                  Now, I'm here to help you do the same.
-                </p>
-                <p>
-                  My mission is to create a <span className="font-semibold">Butterfly Effect</span>: by helping leaders like you 
-                  unlock your full power, we shift the consciousness of the entire planet together.
-                </p>
+
+              <div className="mt-8 bg-warm-white p-6 rounded-xl shadow-lg border-l-4 border-gold">
+                <div className="flex items-start gap-4">
+                  <img
+                    src={testimonials[0].image}
+                    alt={testimonials[0].name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="text-charcoal italic leading-relaxed">
+                      &quot;{testimonials[0].quote.substring(0, 150)}...&quot;
+                    </p>
+                    <p className="font-semibold text-navy mt-2">
+                      {testimonials[0].name}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="order-1 md:order-2">
-              <div className="space-y-6">
-                {/* Main featured image - Ken's framed photo from hero */}
-                <div className="relative group">
-                  {/* Main photo with subtle frame */}
-                  <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                    <img
-                      src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/v1jts1vn_20250311_130413.jpg"
-                      alt="Ken - The Ascension Activator"
-                      className="w-full h-[450px] object-cover transform group-hover:scale-105 transition-all duration-700"
-                    />
-                    {/* Subtle gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent"></div>
-                    
-                    {/* Video play button overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center cursor-pointer">
-                      <div className="w-20 h-20 bg-gold/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-gold transition-all duration-300 shadow-xl">
-                        <Play className="w-8 h-8 text-navy ml-1" />
-                      </div>
-                    </div>
-                    
-                    {/* Caption for video */}
-                    <div className="absolute bottom-0 left-0 right-0 p-8">
-                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                        <p className="text-white font-semibold text-lg mb-1">My Journey of Transformation</p>
-                        <p className="text-white/90 text-sm">Watch how I discovered the path to helping spiritual entrepreneurs embody their soul mission</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Decorative accent bar */}
-                  <div className="absolute -bottom-3 left-8 right-8 h-2 bg-gradient-to-r from-sage via-gold to-sage rounded-full shadow-lg"></div>
-                </div>
+            {/* RIGHT: story text + read more */}
+            <div className="order-2">
+              <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">
+                MY STORY
+              </div>
 
-                {/* Testimonial Card */}
-                <div className="mt-8 bg-warm-white p-6 rounded-xl shadow-lg border-l-4 border-gold">
-                  <div className="flex items-start gap-4">
-                    <img
-                      src={testimonials[0].image}
-                      alt={testimonials[0].name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div className="flex-1">
-                      <p className="text-charcoal italic mb-3 leading-relaxed">
-                        "{testimonials[0].quote.substring(0, 180)}..."
-                      </p>
-                      <div>
-                        <p className="font-semibold text-navy">{testimonials[0].name}</p>
-                        <p className="text-sm text-charcoal/70">{testimonials[0].role}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <h2
+                className="text-4xl md:text-6xl font-bold text-navy mb-8 leading-tight"
+                style={{ fontFamily: "Playfair Display" }}
+              >
+                The path that led me here
+              </h2>
+
+              <div className="space-y-5 text-lg text-charcoal leading-relaxed">
+                <p>
+                  My journey started in the clinical field. I was driven by a
+                  desire to help, but I quickly realized we were treating
+                  symptoms, not root causes.
+                </p>
+
+                <p>
+                  That logical world shattered when an unexpected encounter
+                  triggered memories and spiritual abilities I had suppressed as
+                  a child.
+                </p>
+
+                <p>
+                  I mastered Reiki, mediumship, and channeled work. I was doing
+                  everything “right”…
+                </p>
+
+                <p className="font-semibold text-navy">
+                  But then life threw me a curveball.
+                </p>
+
+                {isStoryExpanded && (
+                  <>
+                    <p>
+                      Despite the inner work, I experienced a major event that
+                      made no sense. It forced me to ask:{" "}
+                      <span className="italic font-semibold">
+                        “If I&apos;m managing my energy perfectly, why is this
+                        happening?”
+                      </span>
+                    </p>
+
+                    <p>
+                      That led me into deep hermiting, channeling the Akashic
+                      Records, and uncovering my{" "}
+                      <span className="font-bold text-navy">Soul Blueprint</span>.
+                    </p>
+
+                    <p>
+                      Once I resolved the Blueprint, my intuition became clear,
+                      and I stepped fully into my mission.
+                    </p>
+
+                    <p className="text-xl font-semibold text-navy">
+                      Now, I help other leaders do the same.
+                    </p>
+                  </>
+                )}
+
+                {!isStoryExpanded && (
+                  <button
+                    onClick={() => setIsStoryExpanded(true)}
+                    className="inline-flex items-center bg-gold text-navy px-6 py-3 rounded-full font-semibold shadow-md hover:bg-gold/90 transition"
+                  >
+                    Read more
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -262,36 +318,89 @@ const LandingPage = () => {
       </section>
 
       {/* Section 3: Challenge */}
-      <section id="challenge" className="py-24 bg-navy text-white relative overflow-hidden">
-        {/* Decorative Elements */}
+      <section
+        id="challenge"
+        className="py-24 bg-navy text-white relative overflow-hidden"
+      >
         <div className="absolute top-0 right-0 w-96 h-96 bg-sage/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-6 text-gold font-bold text-base tracking-wider uppercase">
+          <div className="text-center mb-12">
+            <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">
               Free 3-Day Live Challenge
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight" 
-                style={{ fontFamily: 'Playfair Display' }}>
-              Mission Block Clarity<br />
+            <h2
+              className="text-5xl md:text-7xl font-bold mb-4 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
+              Mission Block Clarity
+              <br />
               <span className="text-gold">3-Day Challenge</span>
             </h2>
-            <p className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-medium mb-4">
-              Discover how the unresolved <span className="font-bold text-gold">Soul Blueprint</span> is stopping you from completing your mission to your greatest potential.
+            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-medium">
+              Discover how the unresolved{" "}
+              <span className="font-bold text-gold">Soul Blueprint</span> is
+              stopping you from completing your mission to your greatest
+              potential.
             </p>
-            <p className="text-xl text-gold font-bold">
-              December 15-17th, 2025 | 12:00 PM EST | LIVE with Ken Franceschi
+            <p className="text-lg text-gold font-semibold mt-4">
+              December 15–17th, 2025 &nbsp;|&nbsp; 12:00 PM EST &nbsp;|&nbsp; LIVE
+              with Ken Franceschi
             </p>
           </div>
 
+          {/* Big rounded body copy box */}
+          <div className="max-w-4xl mx-auto mb-16 bg-slate-900/70 rounded-3xl border border-gold/30 shadow-2xl px-8 md:px-12 py-10 text-center">
+            <div className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gold text-navy font-semibold text-sm mb-6">
+              LIVE with Ken Franceschi
+            </div>
+
+            <div className="space-y-5 text-base md:text-lg text-white/90 leading-relaxed">
+              <p>
+                Through years of deep channeling the Akashic Records, I
+                uncovered the true mechanics of why so many Purpose-Driven Souls
+                hit a ceiling in their journey.
+              </p>
+              <p>
+                To step into your highest potential, you must resolve the{" "}
+                <span className="font-semibold text-gold">Soul Blueprint</span>—
+                the old &quot;source code&quot; you came in with—so you become
+                the vessel that is fully compatible with the impact waiting for
+                you.
+              </p>
+              <p>
+                Over three short, value-packed sessions, we will uncover the
+                missing link that most teachings miss. No fluff. Just my genuine
+                insights from years of channeling and doing this work.
+              </p>
+              <p>
+                This is for the spiritual entrepreneur who is ready to stop
+                wasting time figuring it out on their own. Your mission is too
+                important to wait—it&apos;s time to take the next step toward
+                full embodiment.
+              </p>
+            </div>
+          </div>
+
+          {/* Day cards */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {/* Day 1 */}
             <Card className="bg-white/10 backdrop-blur-sm border-2 border-gold/30 text-white p-8">
               <div className="text-center mb-6">
-                <div className="text-6xl font-bold text-gold mb-2" style={{ fontFamily: 'Playfair Display' }}>01</div>
-                <div className="text-gold font-bold text-sm mb-2">12:00 - 12:30 PM EST</div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display' }}>
+                <div
+                  className="text-6xl font-bold text-gold mb-2"
+                  style={{ fontFamily: "Playfair Display" }}
+                >
+                  01
+                </div>
+                <div className="text-gold font-bold text-sm mb-2">
+                  12:00 – 12:30 PM EST
+                </div>
+                <h3
+                  className="text-2xl font-bold mb-4"
+                  style={{ fontFamily: "Playfair Display" }}
+                >
                   How the Soul Blueprint Stops You
                 </h3>
               </div>
@@ -306,11 +415,11 @@ const LandingPage = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
-                  <span>Channelled insights about planetary shifts</span>
+                  <span>Channeled insights about planetary shifts</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
-                  <span>Why traditional methods can't fix the root problem</span>
+                  <span>Why traditional methods can&apos;t fix the root</span>
                 </li>
               </ul>
             </Card>
@@ -318,9 +427,19 @@ const LandingPage = () => {
             {/* Day 2 */}
             <Card className="bg-white/10 backdrop-blur-sm border-2 border-gold/30 text-white p-8">
               <div className="text-center mb-6">
-                <div className="text-6xl font-bold text-gold mb-2" style={{ fontFamily: 'Playfair Display' }}>02</div>
-                <div className="text-gold font-bold text-sm mb-2">12:00 - 12:30 PM EST</div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display' }}>
+                <div
+                  className="text-6xl font-bold text-gold mb-2"
+                  style={{ fontFamily: "Playfair Display" }}
+                >
+                  02
+                </div>
+                <div className="text-gold font-bold text-sm mb-2">
+                  12:00 – 12:30 PM EST
+                </div>
+                <h3
+                  className="text-2xl font-bold mb-4"
+                  style={{ fontFamily: "Playfair Display" }}
+                >
                   What Your Higher Self Has to Tell You
                 </h3>
               </div>
@@ -335,11 +454,11 @@ const LandingPage = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
-                  <span>Embody the "readiness" for your next step</span>
+                  <span>Embody the readiness for your next step</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
-                  <span>Connect with your soul's mission clarity</span>
+                  <span>Connect with your soul&apos;s mission clarity</span>
                 </li>
               </ul>
             </Card>
@@ -347,16 +466,28 @@ const LandingPage = () => {
             {/* Day 3 */}
             <Card className="bg-white/10 backdrop-blur-sm border-2 border-gold/30 text-white p-8">
               <div className="text-center mb-6">
-                <div className="text-6xl font-bold text-gold mb-2" style={{ fontFamily: 'Playfair Display' }}>03</div>
-                <div className="text-gold font-bold text-sm mb-2">12:00 - 1:00 PM EST</div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display' }}>
+                <div
+                  className="text-6xl font-bold text-gold mb-2"
+                  style={{ fontFamily: "Playfair Display" }}
+                >
+                  03
+                </div>
+                <div className="text-gold font-bold text-sm mb-2">
+                  12:00 – 1:00 PM EST
+                </div>
+                <h3
+                  className="text-2xl font-bold mb-4"
+                  style={{ fontFamily: "Playfair Display" }}
+                >
                   How to Resolve the Blueprint
                 </h3>
               </div>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-2">
                   <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
-                  <span>Advanced energetic patterns most teachers don't discuss</span>
+                  <span>
+                    Advanced energetic patterns most teachers don&apos;t discuss
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <ChevronRight className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
@@ -375,101 +506,211 @@ const LandingPage = () => {
           </div>
 
           <div className="text-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-gold hover:bg-gold/90 text-navy px-12 py-8 text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => window.location.href = externalLinks.challengeRegistration}
+              onClick={() =>
+                (window.location.href = externalLinks.challengeRegistration)
+              }
             >
               Join the FREE 3-Day Challenge
               <ArrowRight className="ml-3 w-7 h-7" />
             </Button>
             <p className="text-white/70 mt-6 text-lg">
-              Limited spots available - Reserve your seat now
+              Limited spots available – Reserve your seat now
             </p>
           </div>
         </div>
       </section>
 
-      {/* Section 4: 1:1 Offers */}
-      <section id="mentorship" className="py-24 bg-warm-white relative overflow-hidden">
-        {/* Background decorative elements */}
+      {/* Section 4: Work With Me – Energy Reading (Step 4) */}
+      <section
+        id="work-with-me"
+        className="py-24 bg-warm-white border-t border-slate-200"
+      >
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <div className="inline-block mb-3 text-sage font-semibold text-sm tracking-wider uppercase">
+              Personalized Support
+            </div>
+            <h2
+              className="text-4xl md:text-5xl font-bold text-navy mb-4 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
+              Get Immediate Clarity.
+              <br />
+              Let&apos;s Pinpoint the Root Cause.
+            </h2>
+            <p className="text-xl text-charcoal/80">
+              Book a <span className="font-semibold">1:1 Energy Reading</span> &
+              Discovery Call.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-2xl border border-sage/30 px-8 md:px-12 py-10 space-y-6">
+            <ul className="space-y-4 text-base md:text-lg text-charcoal leading-relaxed">
+              <li className="flex items-start gap-3">
+                <span className="mt-1">
+                  <ChevronRight className="w-5 h-5 text-sage" />
+                </span>
+                <span>
+                  <span className="font-semibold">Go straight to the root.</span>{" "}
+                  I will read your energetic field to pinpoint the specific root
+                  cause of your most persistent blocks and the &quot;Source
+                  Code&quot; patterns keeping you stuck.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1">
+                  <ChevronRight className="w-5 h-5 text-sage" />
+                </span>
+                <span>
+                  <span className="font-semibold">Get clarity.</span> Receive
+                  direct, spirit-led guidance on exactly what is holding you
+                  back on your unique path, so you stop guessing and know where
+                  to focus your energy next.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1">
+                  <ChevronRight className="w-5 h-5 text-sage" />
+                </span>
+                <span>
+                  <span className="font-semibold">Map the path forward.</span> We
+                  will assess your readiness for the deeper work. If we are a
+                  match, I will map out how my Channeled 3-Step Process can help
+                  you resolve these blocks so you can fulfill your mission at
+                  the highest level.
+                </span>
+              </li>
+            </ul>
+
+            <div className="bg-sage/5 border border-sage/40 rounded-2xl px-6 py-4 text-center">
+              <p className="text-lg font-semibold text-navy">
+                Special Offer for This Month:{" "}
+                <span className="text-sage text-2xl font-bold">$33</span>{" "}
+                <span className="text-charcoal/60 text-sm font-normal">
+                  (Normally $111)
+                </span>
+              </p>
+            </div>
+
+            <div className="text-center pt-2">
+              <Button
+                size="lg"
+                className="bg-navy hover:bg-navy/90 text-white px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                onClick={() => {
+                  const url =
+                    externalLinks.energyReading ||
+                    externalLinks.oneOnOneMentorship ||
+                    externalLinks.challengeRegistration;
+                  if (url) window.location.href = url;
+                }}
+              >
+                YES, BOOK MY ENERGY READING WITH KEN
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: 1:1 Offers – three glass cards */}
+      <section
+        id="mentorship"
+        className="py-24 bg-warm-white relative overflow-hidden"
+      >
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-sage/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold/20 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-navy/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-sage/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold/20 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-navy/10 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-block mb-4 text-sage font-semibold text-sm tracking-wider uppercase">
-              Personalized Support
+              High-Level Mentorship
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight" 
-                style={{ fontFamily: 'Playfair Display' }}>
-              For Direct Guidance and<br />High-Level Support
+            <h2
+              className="text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
+              For Direct Guidance and
+              <br />
+              High-Level Support
             </h2>
             <p className="text-xl text-charcoal max-w-3xl mx-auto leading-relaxed">
-              Ready for deeper, personalized work? I offer targeted 1:1 sessions for clarity, 
-              energy clearing, and spiritual business mentorship.
+              Ready for deeper, personalized work? I offer targeted 1:1 sessions
+              for clarity, energy clearing, and spiritual business mentorship.
             </p>
           </div>
 
+          {/* Three glass cards */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {oneOnOneServices.map((service, index) => {
               const IconComponent = iconMap[service.icon];
               const cardColors = [
-                { 
-                  glassBg: 'bg-sage/30', 
-                  border: 'border-sage/40', 
-                  iconBg: 'bg-sage', 
-                  iconColor: 'text-white', 
-                  accentColor: 'text-sage',
-                  glowShadow: 'shadow-sage/20'
+                {
+                  glassBg: "bg-sage/30",
+                  border: "border-sage/40",
+                  iconBg: "bg-sage",
+                  iconColor: "text-white",
+                  accentColor: "text-sage",
+                  glowShadow: "shadow-sage/20",
                 },
-                { 
-                  glassBg: 'bg-gold/30', 
-                  border: 'border-gold/40', 
-                  iconBg: 'bg-gold', 
-                  iconColor: 'text-navy', 
-                  accentColor: 'text-gold',
-                  glowShadow: 'shadow-gold/20'
+                {
+                  glassBg: "bg-gold/30",
+                  border: "border-gold/40",
+                  iconBg: "bg-gold",
+                  iconColor: "text-navy",
+                  accentColor: "text-gold",
+                  glowShadow: "shadow-gold/20",
                 },
-                { 
-                  glassBg: 'bg-navy/30', 
-                  border: 'border-navy/40', 
-                  iconBg: 'bg-navy', 
-                  iconColor: 'text-white', 
-                  accentColor: 'text-navy',
-                  glowShadow: 'shadow-navy/20'
-                }
+                {
+                  glassBg: "bg-navy/30",
+                  border: "border-navy/40",
+                  iconBg: "bg-navy",
+                  iconColor: "text-white",
+                  accentColor: "text-navy",
+                  glowShadow: "shadow-navy/20",
+                },
               ];
               const colors = cardColors[index];
-              
+
               return (
-                <Card 
-                  key={service.id} 
+                <Card
+                  key={service.id}
                   className={`${colors.glassBg} backdrop-blur-xl border-2 ${colors.border} shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105 group overflow-hidden relative`}
                   style={{
                     background: `linear-gradient(135deg, ${
-                      index === 0 ? 'rgba(163, 184, 162, 0.15)' : 
-                      index === 1 ? 'rgba(212, 175, 55, 0.15)' : 
-                      'rgba(20, 32, 61, 0.15)'
+                      index === 0
+                        ? "rgba(163, 184, 162, 0.15)"
+                        : index === 1
+                        ? "rgba(212, 175, 55, 0.15)"
+                        : "rgba(20, 32, 61, 0.15)"
                     } 0%, rgba(255, 255, 255, 0.4) 100%)`,
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)'
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
                   }}
                 >
-                  {/* Animated gradient border */}
-                  <div className={`absolute top-0 left-0 right-0 h-1 ${colors.iconBg} group-hover:h-2 transition-all duration-300`}></div>
-                  
-                  {/* Subtle shimmer effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+                  <div
+                    className={`absolute top-0 left-0 right-0 h-1 ${colors.iconBg} group-hover:h-2 transition-all duration-300`}
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
                   <CardHeader className="relative z-10">
-                    <div className={`w-20 h-20 ${colors.iconBg} rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl`}>
-                      <IconComponent className={`w-10 h-10 ${colors.iconColor}`} />
+                    <div
+                      className={`w-20 h-20 ${colors.iconBg} rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl`}
+                    >
+                      <IconComponent
+                        className={`w-10 h-10 ${colors.iconColor}`}
+                      />
                     </div>
-                    <CardTitle className={`text-2xl font-bold ${colors.accentColor} mb-2`} style={{ fontFamily: 'Playfair Display' }}>
+                    <CardTitle
+                      className={`text-2xl font-bold ${colors.accentColor} mb-2`}
+                      style={{ fontFamily: "Playfair Display" }}
+                    >
                       {service.title}
                     </CardTitle>
                   </CardHeader>
@@ -479,11 +720,20 @@ const LandingPage = () => {
                     </p>
                     <div className="space-y-3 mb-6">
                       {service.benefits.map((benefit, idx) => (
-                        <div key={idx} className="flex items-start gap-3 group/item">
-                          <div className={`w-6 h-6 ${colors.iconBg} rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform duration-300 shadow-md`}>
-                            <ChevronRight className={`w-3 h-3 ${colors.iconColor}`} />
+                        <div
+                          key={idx}
+                          className="flex items-start gap-3 group/item"
+                        >
+                          <div
+                            className={`w-6 h-6 ${colors.iconBg} rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform duration-300 shadow-md`}
+                          >
+                            <ChevronRight
+                              className={`w-3 h-3 ${colors.iconColor}`}
+                            />
                           </div>
-                          <span className="text-sm text-charcoal/90 font-medium">{benefit}</span>
+                          <span className="text-sm text-charcoal/90 font-medium">
+                            {benefit}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -494,10 +744,12 @@ const LandingPage = () => {
           </div>
 
           <div className="text-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-navy hover:bg-navy/90 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => window.location.href = externalLinks.oneOnOneMentorship}
+              onClick={() =>
+                (window.location.href = externalLinks.oneOnOneMentorship)
+              }
             >
               Explore 1:1 Mentorship
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -506,42 +758,54 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 5: Events Portal */}
-      <section id="events" className="py-24 bg-white">
+      {/* Section 6: Live Events */}
+      <section id="events" className="py-24 bg-navy text-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-block mb-4 text-sage font-semibold text-sm tracking-wider uppercase">
-              Live Connection
+            <div className="inline-block mb-4 text-gold font-semibold text-sm tracking-wider uppercase">
+              Live Events
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight" 
-                style={{ fontFamily: 'Playfair Display' }}>
-              Join Me for a<br />Live Channeled Event
+            <h2
+              className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white"
+              style={{ fontFamily: "Playfair Display" }}
+            >
+              Join Us for Live Transformation.
             </h2>
-            <p className="text-xl text-charcoal max-w-3xl mx-auto leading-relaxed">
-              Experience the power of collective energy work. Join our live transmissions, 
-              meditations, and sacred circle gatherings.
+            <p className="text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed">
+              Whether you need clarity on your blocks, coaching on your mission,
+              or a deep energetic reset—
+              <span className="font-semibold text-gold">
+                {" "}
+                our live events are where the shift happens.
+              </span>
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {upcomingEvents.map((event) => (
-              <Card key={event.id} className="bg-gradient-to-br from-warm-white to-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <Card
+                key={event.id}
+                className="bg-gradient-to-br from-slate-900/60 to-slate-800/60 border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300 text-white"
+              >
                 <CardHeader>
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="px-3 py-1 bg-gold/10 text-gold rounded-full text-xs font-semibold">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="px-3 py-1 bg-gold/15 text-gold rounded-full text-xs font-semibold">
                       {event.type}
                     </div>
-                    <Calendar className="w-5 h-5 text-sage" />
+                    <Calendar className="w-5 h-5 text-gold" />
                   </div>
-                  <CardTitle className="text-2xl font-bold text-navy" style={{ fontFamily: 'Playfair Display' }}>
+                  <CardTitle
+                    className="text-2xl font-bold text-white"
+                    style={{ fontFamily: "Playfair Display" }}
+                  >
                     {event.title}
                   </CardTitle>
-                  <CardDescription className="text-charcoal/70">
-                    {event.date} at {event.time}
+                  <CardDescription className="text-white/70">
+                    {event.date} &middot; {event.time}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-charcoal/80 leading-relaxed">
+                  <p className="text-white/80 leading-relaxed">
                     {event.description}
                   </p>
                 </CardContent>
@@ -550,28 +814,32 @@ const LandingPage = () => {
           </div>
 
           <div className="text-center">
-            <Button 
-              size="lg" 
-              className="bg-sage hover:bg-sage/90 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => window.location.href = externalLinks.upcomingEvents}
+            <Button
+              size="lg"
+              className="bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              onClick={() =>
+                (window.location.href = externalLinks.upcomingEvents)
+              }
             >
-              See Upcoming Events & Register
+              Browse Upcoming Events
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Section 6: Community */}
-      <section id="community" className="py-24 bg-dark-grey text-white relative overflow-hidden">
-        {/* Background Image */}
+      {/* Section 7: Community */}
+      <section
+        id="community"
+        className="py-24 bg-dark-grey text-white relative overflow-hidden"
+      >
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1496008889433-9b938d8ac880?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxlbmVyZ3klMjBoZWFsaW5nfGVufDB8fHx8MTc1OTk1ODMyNnww&ixlib=rb-4.1.0&q=85"
             alt="Community"
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/95 to-dark-grey/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/95 to-dark-grey/90" />
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -580,22 +848,27 @@ const LandingPage = () => {
               <div className="inline-block mb-6 text-gold font-bold text-base tracking-wider uppercase">
                 Join The Family
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight" 
-                  style={{ fontFamily: 'Playfair Display' }}>
-                This Is Where You<br />Find Your Tribe
+              <h2
+                className="text-5xl md:text-6xl font-bold mb-8 leading-tight"
+                style={{ fontFamily: "Playfair Display" }}
+              >
+                This Is Where You
+                <br />
+                Find Your Tribe
               </h2>
               <p className="text-2xl text-white/90 mb-10 leading-relaxed font-medium">
-                A safe space for spiritual entrepreneurs, practitioners and change-makers to connect, 
-                share their stories, and feel truly seen.
+                A safe space for spiritual entrepreneurs, practitioners and
+                change-makers to connect, share their stories, and feel truly
+                seen.
               </p>
 
               <div className="space-y-5 mb-10">
                 {[
-                  'Live coaching calls and channeled energy activations with Ken',
-                  'Weekly Light List - receive channeled portals and light codes',
-                  'Event replay archive - on-demand access to all past events',
-                  'Spiritual toolkit - meditations, routines, and practical tools',
-                  'Dedicated community space to connect with your soul family'
+                  "Live coaching calls and channeled energy activations with Ken",
+                  "Weekly Light List - receive channeled portals and light codes",
+                  "Event replay archive - on-demand access to all past events",
+                  "Spiritual toolkit - meditations, routines, and practical tools",
+                  "Dedicated community space to connect with your soul family",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="w-7 h-7 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-1">
@@ -606,10 +879,12 @@ const LandingPage = () => {
                 ))}
               </div>
 
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                onClick={() => window.location.href = externalLinks.soulCircleFamily}
+                onClick={() =>
+                  (window.location.href = externalLinks.soulCircleFamily)
+                }
               >
                 Join The Family - $44/Month
                 <ArrowRight className="ml-2 w-6 h-6" />
@@ -618,9 +893,12 @@ const LandingPage = () => {
 
             <div className="space-y-6">
               {testimonials.slice(1, 3).map((testimonial) => (
-                <div key={testimonial.id} className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                <div
+                  key={testimonial.id}
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20"
+                >
                   <p className="text-white/90 italic mb-4 leading-relaxed">
-                    "{testimonial.quote}"
+                    &quot;{testimonial.quote}&quot;
                   </p>
                   <div className="flex items-center gap-3">
                     <img
@@ -629,8 +907,12 @@ const LandingPage = () => {
                       className="w-12 h-12 rounded-full object-cover"
                     />
                     <div>
-                      <p className="font-semibold text-white">{testimonial.name}</p>
-                      <p className="text-sm text-white/60">{testimonial.role}</p>
+                      <p className="font-semibold text-white">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-sm text-white/60">
+                        {testimonial.role}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -640,27 +922,37 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 7: Resources - YouTube & Blog */}
+      {/* Section 8: Resources */}
       <section id="resources" className="py-24 bg-warm-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">
-              Resources & Insights
+              Resources &amp; Insights
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" 
-                style={{ fontFamily: 'Playfair Display' }}>
-              Channeled Wisdom &<br />Soul Mission Insights
+            <h2
+              className="text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
+              Channeled Wisdom &amp;
+              <br />
+              Soul Mission Insights
             </h2>
           </div>
 
           {/* YouTube Videos */}
           <div>
-            <h3 className="text-2xl font-bold text-navy mb-8" style={{ fontFamily: 'Playfair Display' }}>
+            <h3
+              className="text-2xl font-bold text-navy mb-8"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Latest YouTube Transmissions
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
               {youtubVideos.map((video) => (
-                <Card key={video.id} className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden">
+                <Card
+                  key={video.id}
+                  className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                >
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={video.thumbnail}
@@ -677,8 +969,10 @@ const LandingPage = () => {
                     </div>
                   </div>
                   <CardHeader>
-                    <CardTitle className="text-lg font-bold text-navy group-hover:text-sage transition-colors duration-300" 
-                                style={{ fontFamily: 'Playfair Display' }}>
+                    <CardTitle
+                      className="text-lg font-bold text-navy group-hover:text-sage transition-colors duration-300"
+                      style={{ fontFamily: "Playfair Display" }}
+                    >
                       {video.title}
                     </CardTitle>
                     <CardDescription className="flex items-center gap-2 text-charcoal/60 text-sm">
@@ -690,25 +984,31 @@ const LandingPage = () => {
               ))}
             </div>
             <div className="text-center mt-10">
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                variant="outline"
+                size="lg"
                 className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-7 text-xl font-bold rounded-full transition-all duration-300"
-                onClick={() => window.location.href = externalLinks.youtube}
+                onClick={() => (window.location.href = externalLinks.youtube)}
               >
                 Watch More on YouTube
               </Button>
             </div>
           </div>
 
-          {/* Blog Posts - MOVED TO BOTTOM */}
+          {/* Blog Posts */}
           <div className="mt-20">
-            <h3 className="text-3xl font-bold text-navy mb-10" style={{ fontFamily: 'Playfair Display' }}>
+            <h3
+              className="text-3xl font-bold text-navy mb-10"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Latest Soul Mission Insights
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
               {blogPosts.map((post) => (
-                <Card key={post.id} className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden">
+                <Card
+                  key={post.id}
+                  className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                >
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={post.image}
@@ -725,13 +1025,17 @@ const LandingPage = () => {
                     <CardDescription className="text-charcoal/60 text-sm mb-2">
                       {post.date}
                     </CardDescription>
-                    <CardTitle className="text-xl font-bold text-navy group-hover:text-gold transition-colors duration-300" 
-                                style={{ fontFamily: 'Playfair Display' }}>
+                    <CardTitle
+                      className="text-xl font-bold text-navy group-hover:text-gold transition-colors duration-300"
+                      style={{ fontFamily: "Playfair Display" }}
+                    >
                       {post.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-charcoal/80 mb-4 leading-relaxed">{post.excerpt}</p>
+                    <p className="text-charcoal/80 mb-4 leading-relaxed">
+                      {post.excerpt}
+                    </p>
                     <div className="flex items-center text-navy font-semibold text-sm group-hover:gap-2 transition-all duration-300">
                       Read More
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
@@ -741,11 +1045,11 @@ const LandingPage = () => {
               ))}
             </div>
             <div className="text-center mt-10">
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                variant="outline"
+                size="lg"
                 className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-7 text-xl font-bold rounded-full transition-all duration-300"
-                onClick={() => window.location.href = externalLinks.blog}
+                onClick={() => (window.location.href = externalLinks.blog)}
               >
                 Read More Articles
               </Button>
@@ -754,7 +1058,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 8: Final CTA & Footer */}
+      {/* Section 9: Final CTA */}
       <section className="py-24 bg-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -762,28 +1066,34 @@ const LandingPage = () => {
             alt="Transformation"
             className="w-full h-full object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/95 to-navy"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/95 to-navy" />
         </div>
 
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight" 
-              style={{ fontFamily: 'Playfair Display' }}>
-            Ready to Resolve Your Soul Blueprint<br />
+          <h2
+            className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
+            style={{ fontFamily: "Playfair Display" }}
+          >
+            Ready to Resolve Your Soul Blueprint
+            <br />
             <span className="text-gold">And Embody Your Mission?</span>
           </h2>
           <p className="text-2xl text-white/90 mb-12 leading-relaxed font-medium max-w-4xl mx-auto">
-            Join the Mission Block Clarity Challenge and discover the advanced energetic patterns keeping you from your highest potential.
+            Join the Mission Block Clarity Challenge and discover the advanced
+            energetic patterns keeping you from your highest potential.
           </p>
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="bg-gold hover:bg-gold/90 text-navy px-12 py-8 text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
-            onClick={() => window.location.href = externalLinks.challengeRegistration}
+            onClick={() =>
+              (window.location.href = externalLinks.challengeRegistration)
+            }
           >
             Join the FREE 3-Day Challenge
             <ArrowRight className="ml-3 w-7 h-7" />
           </Button>
           <p className="text-white/70 mt-8 text-lg font-medium">
-            December 15-17, 2025 | 12:00 PM EST | Live with Ken
+            December 15–17, 2025 | 12:00 PM EST | Live with Ken
           </p>
         </div>
       </section>
@@ -794,12 +1104,16 @@ const LandingPage = () => {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             {/* Brand */}
             <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display' }}>
+              <h3
+                className="text-2xl font-bold mb-4"
+                style={{ fontFamily: "Playfair Display" }}
+              >
                 Souls Circle
               </h3>
               <p className="text-white/70 mb-6 leading-relaxed">
-                Helping empaths clear their final energy blocks and activate their soul's true mission 
-                through channeled methods and deep energetic work.
+                Helping empaths clear their final energy blocks and activate
+                their soul&apos;s true mission through channeled methods and
+                deep energetic work.
               </p>
               <div className="flex items-center gap-4">
                 {socialLinks.map((social) => {
@@ -821,7 +1135,12 @@ const LandingPage = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-bold text-lg mb-4" style={{ fontFamily: 'Playfair Display' }}>Quick Links</h4>
+              <h4
+                className="font-bold text-lg mb-4"
+                style={{ fontFamily: "Playfair Display" }}
+              >
+                Quick Links
+              </h4>
               <ul className="space-y-2">
                 {navigationLinks.map((link) => (
                   <li key={link.label}>
@@ -838,17 +1157,22 @@ const LandingPage = () => {
 
             {/* Newsletter */}
             <div>
-              <h4 className="font-bold text-lg mb-4" style={{ fontFamily: 'Playfair Display' }}>Stay Connected</h4>
-              <p className="text-white/70 text-sm mb-4">Get weekly insights and channeled guidance:</p>
+              <h4
+                className="font-bold text-lg mb-4"
+                style={{ fontFamily: "Playfair Display" }}
+              >
+                Stay Connected
+              </h4>
+              <p className="text-white/70 text-sm mb-4">
+                Get weekly insights and channeled guidance:
+              </p>
               <div className="flex flex-col gap-2">
                 <input
                   type="email"
                   placeholder="Your email"
                   className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-gold transition-colors duration-300"
                 />
-                <Button 
-                  className="bg-gold hover:bg-gold/90 text-navy rounded-full font-semibold"
-                >
+                <Button className="bg-gold hover:bg-gold/90 text-navy rounded-full font-semibold">
                   Subscribe
                 </Button>
               </div>
@@ -856,7 +1180,10 @@ const LandingPage = () => {
           </div>
 
           <div className="border-t border-white/10 pt-8 text-center text-white/60 text-sm">
-            <p>&copy; {new Date().getFullYear()} Souls Circle. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} Souls Circle. All rights
+              reserved.
+            </p>
           </div>
         </div>
       </footer>
