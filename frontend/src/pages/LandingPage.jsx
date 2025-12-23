@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -12,19 +12,13 @@ import {
   Sparkles,
   Lightbulb,
   Calendar,
-  Users,
   ArrowRight,
   Play,
-  Clock,
   Eye,
   ChevronRight,
-  Mail,
   Instagram,
   Youtube,
   Facebook,
-  Heart,
-  Zap,
-  Star,
 } from "lucide-react";
 import {
   testimonials,
@@ -51,18 +45,247 @@ const LandingPage = () => {
   const [isStoryExpanded, setIsStoryExpanded] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
+  };
+
+  /**
+   * Add Testimonials to nav without editing mock.js
+   * (avoids you having to touch other files)
+   */
+  const navLinks = useMemo(() => {
+    const hasTestimonials = (navigationLinks || []).some(
+      (l) => l?.href === "#testimonials"
+    );
+    if (hasTestimonials) return navigationLinks || [];
+    return [
+      ...(navigationLinks || []),
+      { label: "Testimonials", href: "#testimonials" },
+    ];
+  }, []);
+
+  /**
+   * Ken Tab 3 testimonials (provided by you)
+   * Layout “C” = 2 featured + horizontal scroll for the rest.
+   *
+   * NOTE: keeping these in this file (not mock.js) to avoid you having to edit multiple files.
+   */
+  const kenTestimonials = useMemo(() => {
+    return [
+      // Story/About
+      {
+        id: "t_story_francesco",
+        section: "Story / About",
+        name: "Francesco Cracolici",
+        title: "CEO - Nomadic Minds",
+        now: "Now Spiritual Entrepreneur",
+        quote:
+          "In our very first call, you told me things about myself that were impossible for you to know. It was like you accessed a different plane of information, and I just knew I had to work with Ken. The biggest problem is that you don't know what's secretly holding you back. Every week Ken would point out a new blind spot, like anger from a past life I never knew existed, and we'd fix it. It was like he just turned on the lights in a dark room. I was successful, but I always felt like I wasn't fully in my purpose. After working with Ken, I found that missing piece, and now my life is full of so much more synchronicities and new opportunities.",
+        featured: true,
+      },
+      {
+        id: "t_story_deb",
+        section: "Story / About",
+        name: "Deb Ojedas",
+        title: "Organization coach",
+        now: "Now Spiritual Children’s Book Author",
+        quote:
+          "Allow me to share how I feel when being guided by Ken. Held. Understood. Safe. Ken meets me where I am. No judgement. His guidance is rooted in love and immense wisdom. These experiences continue to unfold in ways that empower and deepen my connection to my True Essence. Thank you Ken",
+        featured: false,
+      },
+      {
+        id: "t_story_jenn",
+        section: "Story / About",
+        name: "Jenn Tomko",
+        title: "Psychotherapist",
+        now: "Now Spiritual Coach",
+        quote:
+          "My work with Ken has been incredibly eye-opening. He has helped me expand my awareness and tap into higher levels of understanding, allowing me to see my life path with more clarity. I’ve gained confidence in trusting my intuition and honoring my own gifts, which has made a meaningful difference in how I move through life. I can FEEL my power in a way that I didn't know possible. I am forever grateful for Ken and his role in my journey.",
+        featured: false,
+      },
+      {
+        id: "t_story_christiene",
+        section: "Story / About",
+        name: "Christiene Renée",
+        title: "Intuitive coach and feminine leadership guide",
+        now: null,
+        quote:
+          "Ken is awesome! He’s a magical, multidimensional soul and a supportive, intuitive and genuinely loving guide. I’ve been utilizing his powerful, consciousness raising container for some fine-tuning and deep dives, and it’s been incredible! I’ve moved through so much stuff I thought had already done. He's fun too!",
+        featured: false,
+      },
+
+      // Challenge
+      {
+        id: "t_challenge_elishama",
+        section: "Challenge",
+        name: "Elishama Spicer",
+        title: "Spiritual Coach and Somatic Dance Practitioner",
+        now: null,
+        quote:
+          "Trust your gut and take this Challenge! I almost didn't start this journey because I had done so much spiritual work already, but it turned out to be the greatest gift. Ken’s methods address blocks on a 'quantum level' in a way nothing else ever had. The ceiling I had hit finally dissolved, and I emerged with a new sense of clarity, tons of energy, and greater discernment of my own empathic abilities. Don't let your hesitation stop you; this is the missing piece.",
+        featured: true,
+      },
+      {
+        id: "t_challenge_ditra",
+        section: "Challenge",
+        name: "Ditra Walsh",
+        title: "Intuitive Guide and Teacher",
+        now: null,
+        quote:
+          "I strongly encourage you to take this 3-day challenge to identify the energy blocks holding you back, it gave me a crucial flavor of the transformation to come. It led me to join the full VTS program, which provided the deep tools required to actually transmute those obstacles. Because of this journey, I know myself better, feel more connected, love myself more, and I have significantly less fear & imposter syndrome.",
+        featured: false,
+      },
+
+      // Work-with-me
+      {
+        id: "t_workwithme_mark",
+        section: "Work With Me",
+        name: "Mark Piorecky",
+        title: "Biologist & Business Owner",
+        now: "Now Environmental Impact leader",
+        quote:
+          "The energy reading was incredible—the insights were spot-on and gave me the absolute certainty I needed to dive deeper. Just starting the work, the shift has already been profound and 'times a thousand' compared to other practices I’ve tried. I’ve gone from feeling depleted to being 'lit up like a Christmas tree,' connecting with my Higher Self in a way that feels totally new. If you are looking for a clear path forward, this is it.",
+        featured: false,
+      },
+      {
+        id: "t_workwithme_brendan",
+        section: "Work With Me",
+        name: "Brendan Mullan",
+        title: "Construction Consultant",
+        now: "Now Mental Sovereignty Advocate & Author",
+        quote:
+          "What drew me to Ken specifically was the synchronicity of how we connected. I followed my intuition and the entire chain of events felt purposeful rather than coincidental. The confirmation and clarity he shared in the session provided me with the clarity and the path for what I need right now. I can already feel it's creating some sort of movement.",
+        featured: false,
+      },
+
+      // Events
+      {
+        id: "t_events_1",
+        section: "Events",
+        name: null,
+        title: null,
+        now: null,
+        quote:
+          "Wow! In just a few short minutes at one of Ken’s coaching events and he pointed out an insights that had kept me stuck for years even with all my intuitive knowledge and self development work. It was like the missing puzzle piece clicked and the clarity was incredible.",
+        featured: false,
+      },
+      {
+        id: "t_events_2",
+        section: "Events",
+        name: null,
+        title: null,
+        now: null,
+        quote:
+          "I always enjoy going to Ken’s events because every time I walk away with insights, and can feel my vibration rising and rising. I always feel uplifted, inspired afterwards.",
+        featured: false,
+      },
+      {
+        id: "t_events_3",
+        section: "Events",
+        name: null,
+        title: null,
+        now: null,
+        quote:
+          "And yesterday the way Ken articulated his insights was so strong and relatable and I could connect with a lot of it. And the timing of everything like that was an exact event I needed it at the exact time. Absolutely awesome I loved everything about it.",
+        featured: false,
+      },
+      {
+        id: "t_events_4",
+        section: "Events",
+        name: null,
+        title: null,
+        now: null,
+        quote:
+          "Every time I join Ken’s meetings, there's always something new and insightful from him or something useful from connecting with others who have similar experiences to me",
+        featured: false,
+      },
+
+      // Community
+      {
+        id: "t_community_kimberly",
+        section: "Community",
+        name: "Kimberly Barrett",
+        title: "Founder and Coach of a Spiritual Development Community",
+        now: null,
+        quote:
+          "Having done so much work already, I struggled to find a community that offered the depth I was looking for. This space is different. Ken’s channeled guidance is profound and consistently feels like it speaks specifically to me and my situation. It’s an incredibly comfortable space to share, collaborate, and grow alongside peers who are on the same frequency. It is incredible to have a comfortable space to connect with true peers and finally receive the high-level support I need.",
+        featured: false,
+      },
+      {
+        id: "t_community_elishama",
+        section: "Community",
+        name: "Elishama Spicer",
+        title: "Spiritual Coach and Somatic Dance Practitioner",
+        now: null,
+        quote:
+          "I was divinely guided to this group and instantly felt the joy of connecting with so many who speak my language, my soul family. But the real power here is the access to Ken’s guidance. The weekly live coaching keeps me motivated, provides clarity, and keeps my mission on track. I’ve been a part of lot’s of things but I’ve not seen something quite like this, Ken pulls together the most powerful techniques to get straight to the root cause, which just shows the power of channeled wisdom. I am so grateful to have this space and this support!",
+        featured: false,
+      },
+
+      // 7 day challenge
+      {
+        id: "t_7day_larry_1",
+        section: "7-Day Challenge",
+        name: "Larry Horowitz",
+        title: "PMO",
+        now: "Now Spiritual Writer",
+        quote:
+          "Day 1 meditation gave me a strong sense of connection, like I was one with everything. I repeated it and had an even greater connection the second time around!",
+        featured: false,
+      },
+      {
+        id: "t_7day_larry_2",
+        section: "7-Day Challenge",
+        name: "Larry Horowitz",
+        title: "PMO",
+        now: "Now Spiritual Writer",
+        quote:
+          "My closing feedback for the past 7 days is that there seems to be a subtle buildup from day to day, meaning that I couldn't detect anything on a daily basis, but I do feel more energized, more energetic, more peaceful on day seven than I did on day one.",
+        featured: false,
+      },
+      {
+        id: "t_7day_erica",
+        section: "7-Day Challenge",
+        name: "Erica Tocci",
+        title: "Empath & Intuitive",
+        now: null,
+        quote:
+          "I loved every one and how I felt physically and spiritually during and afterwards. I also noticed waking up the last few mornings with more energy and feeling lighter, calmer, more optimistic and focused with way less anxiety..which is HUGE!!!",
+        featured: false,
+      },
+    ];
+  }, []);
+
+  const featuredTestimonials = useMemo(
+    () => kenTestimonials.filter((t) => t.featured).slice(0, 2),
+    [kenTestimonials]
+  );
+
+  const scrollTestimonials = useMemo(() => {
+    const featuredIds = new Set(featuredTestimonials.map((t) => t.id));
+    return kenTestimonials.filter((t) => !featuredIds.has(t.id));
+  }, [kenTestimonials, featuredTestimonials]);
+
+  const badgeStyles = (sectionName) => {
+    const base =
+      "inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold";
+    const map = {
+      "Story / About": `${base} bg-sage/15 text-sage border border-sage/25`,
+      Challenge: `${base} bg-gold/15 text-gold border border-gold/25`,
+      "Work With Me": `${base} bg-navy/10 text-navy border border-navy/15`,
+      Events: `${base} bg-white/10 text-white border border-white/15`,
+      Community: `${base} bg-gold/15 text-gold border border-gold/25`,
+      "7-Day Challenge": `${base} bg-sage/15 text-sage border border-sage/25`,
+    };
+    return (
+      map[sectionName] || `${base} bg-white/10 text-white border border-white/15`
+    );
   };
 
   return (
@@ -70,7 +293,9 @@ const LandingPage = () => {
       {/* Navigation */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-md" : "bg-transparent"
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-md"
+            : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
@@ -84,7 +309,7 @@ const LandingPage = () => {
             />
           </div>
           <div className="hidden md:flex items-center gap-8">
-            {navigationLinks.map((link) => (
+            {navLinks.map((link) => (
               <button
                 key={link.label}
                 onClick={() => scrollToSection(link.href)}
@@ -115,6 +340,7 @@ const LandingPage = () => {
             {/* Make sure this file exists in public/hero-background.mp4 */}
             <source src="/hero-background.mp4" type="video/mp4" />
           </video>
+
           {/* Radial overlay for readability */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.55)_60%,rgba(0,0,0,0.7)_100%)] pointer-events-none" />
         </div>
@@ -175,6 +401,7 @@ const LandingPage = () => {
               </p>
             </div>
           </div>
+
           {/* CTA Box */}
           <div
             className="max-w-3xl mx-auto rounded-[40px] border border-white/70 bg-slate-900/80 backdrop-blur-md p-10 shadow-2xl animate-fade-in-up"
@@ -188,8 +415,8 @@ const LandingPage = () => {
             </h3>
             <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
               Don&apos;t settle for generic tools. Take the 30-second quiz to
-              receive a premium Activation Meditation tailored to your goals—
-              the same caliber of tool my private clients use.
+              receive a premium Activation Meditation tailored to your goals—the
+              same caliber of tool my private clients use.
             </p>
             <Button
               size="lg"
@@ -202,7 +429,6 @@ const LandingPage = () => {
               <ArrowRight className="ml-2 w-6 h-6" />
             </Button>
           </div>
-
         </div>
       </section>
 
@@ -223,16 +449,18 @@ const LandingPage = () => {
               <div className="mt-8 bg-warm-white p-6 rounded-xl shadow-lg border-l-4 border-gold">
                 <div className="flex items-start gap-4">
                   <img
-                    src={testimonials[0].image}
-                    alt={testimonials[0].name}
+                    src={testimonials?.[0]?.image}
+                    alt={testimonials?.[0]?.name || "Testimonial"}
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
                     <p className="text-charcoal italic leading-relaxed">
-                      &quot;{testimonials[0].quote.substring(0, 150)}...&quot;
+                      &quot;
+                      {testimonials?.[0]?.quote?.substring(0, 150) || "…"}...
+                      &quot;
                     </p>
                     <p className="font-semibold text-navy mt-2">
-                      {testimonials[0].name}
+                      {testimonials?.[0]?.name || "—"}
                     </p>
                   </div>
                 </div>
@@ -288,7 +516,8 @@ const LandingPage = () => {
                     <p>
                       That led me into deep hermiting, channeling the Akashic
                       Records, and uncovering my{" "}
-                      <span className="font-bold text-navy">Soul Blueprint</span>.
+                      <span className="font-bold text-navy">Soul Blueprint</span>
+                      .
                     </p>
 
                     <p>
@@ -322,8 +551,8 @@ const LandingPage = () => {
         id="challenge"
         className="py-24 bg-navy text-white relative overflow-hidden"
       >
-        <div className="absolute top-0 right-0 w-96 h-96 bg-sage/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-sage/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
@@ -345,8 +574,8 @@ const LandingPage = () => {
               potential.
             </p>
             <p className="text-lg text-gold font-semibold mt-4">
-              December 15–17th, 2025 &nbsp;|&nbsp; 12:00 PM EST &nbsp;|&nbsp; LIVE
-              with Ken Franceschi
+              December 15–17th, 2025 &nbsp;|&nbsp; 12:00 PM EST &nbsp;|&nbsp;
+              LIVE with Ken Franceschi
             </p>
           </div>
 
@@ -364,8 +593,8 @@ const LandingPage = () => {
               </p>
               <p>
                 To step into your highest potential, you must resolve the{" "}
-                <span className="font-semibold text-gold">Soul Blueprint</span>—
-                the old &quot;source code&quot; you came in with—so you become
+                <span className="font-semibold text-gold">Soul Blueprint</span>
+                —the old &quot;source code&quot; you came in with—so you become
                 the vessel that is fully compatible with the impact waiting for
                 you.
               </p>
@@ -385,7 +614,6 @@ const LandingPage = () => {
 
           {/* Day cards */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {/* Day 1 */}
             <Card className="bg-white/10 backdrop-blur-sm border-2 border-gold/30 text-white p-8">
               <div className="text-center mb-6">
                 <div
@@ -424,7 +652,6 @@ const LandingPage = () => {
               </ul>
             </Card>
 
-            {/* Day 2 */}
             <Card className="bg-white/10 backdrop-blur-sm border-2 border-gold/30 text-white p-8">
               <div className="text-center mb-6">
                 <div
@@ -463,7 +690,6 @@ const LandingPage = () => {
               </ul>
             </Card>
 
-            {/* Day 3 */}
             <Card className="bg-white/10 backdrop-blur-sm border-2 border-gold/30 text-white p-8">
               <div className="text-center mb-6">
                 <div
@@ -523,7 +749,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 4: Work With Me – Energy Reading (Step 4) */}
+      {/* Section 4: Work With Me – Energy Reading (NO PRICE per Ken update) */}
       <section
         id="work-with-me"
         className="py-24 bg-warm-white border-t border-slate-200"
@@ -542,8 +768,8 @@ const LandingPage = () => {
               Let&apos;s Pinpoint the Root Cause.
             </h2>
             <p className="text-xl text-charcoal/80">
-              Book a <span className="font-semibold">1:1 Energy Reading</span> &
-              Discovery Call.
+              Book a <span className="font-semibold">1:1 Energy Reading</span>{" "}
+              &amp; Discovery Call.
             </p>
           </div>
 
@@ -576,24 +802,14 @@ const LandingPage = () => {
                   <ChevronRight className="w-5 h-5 text-sage" />
                 </span>
                 <span>
-                  <span className="font-semibold">Map the path forward.</span> We
-                  will assess your readiness for the deeper work. If we are a
+                  <span className="font-semibold">Map the path forward.</span>{" "}
+                  We will assess your readiness for the deeper work. If we are a
                   match, I will map out how my Channeled 3-Step Process can help
                   you resolve these blocks so you can fulfill your mission at
                   the highest level.
                 </span>
               </li>
             </ul>
-
-            <div className="bg-sage/5 border border-sage/40 rounded-2xl px-6 py-4 text-center">
-              <p className="text-lg font-semibold text-navy">
-                Special Offer for This Month:{" "}
-                <span className="text-sage text-2xl font-bold">$33</span>{" "}
-                <span className="text-charcoal/60 text-sm font-normal">
-                  (Normally $111)
-                </span>
-              </p>
-            </div>
 
             <div className="text-center pt-2">
               <Button
@@ -645,7 +861,6 @@ const LandingPage = () => {
             </p>
           </div>
 
-          {/* Three glass cards */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {oneOnOneServices.map((service, index) => {
               const IconComponent = iconMap[service.icon];
@@ -656,7 +871,6 @@ const LandingPage = () => {
                   iconBg: "bg-sage",
                   iconColor: "text-white",
                   accentColor: "text-sage",
-                  glowShadow: "shadow-sage/20",
                 },
                 {
                   glassBg: "bg-gold/30",
@@ -664,7 +878,6 @@ const LandingPage = () => {
                   iconBg: "bg-gold",
                   iconColor: "text-navy",
                   accentColor: "text-gold",
-                  glowShadow: "shadow-gold/20",
                 },
                 {
                   glassBg: "bg-navy/30",
@@ -672,10 +885,9 @@ const LandingPage = () => {
                   iconBg: "bg-navy",
                   iconColor: "text-white",
                   accentColor: "text-navy",
-                  glowShadow: "shadow-navy/20",
                 },
               ];
-              const colors = cardColors[index];
+              const colors = cardColors[index] || cardColors[0];
 
               return (
                 <Card
@@ -696,16 +908,17 @@ const LandingPage = () => {
                   <div
                     className={`absolute top-0 left-0 right-0 h-1 ${colors.iconBg} group-hover:h-2 transition-all duration-300`}
                   />
-
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <CardHeader className="relative z-10">
                     <div
                       className={`w-20 h-20 ${colors.iconBg} rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl`}
                     >
-                      <IconComponent
-                        className={`w-10 h-10 ${colors.iconColor}`}
-                      />
+                      {IconComponent ? (
+                        <IconComponent
+                          className={`w-10 h-10 ${colors.iconColor}`}
+                        />
+                      ) : null}
                     </div>
                     <CardTitle
                       className={`text-2xl font-bold ${colors.accentColor} mb-2`}
@@ -718,14 +931,11 @@ const LandingPage = () => {
                     <p className="text-charcoal/95 mb-6 leading-relaxed font-medium">
                       {service.description}
                     </p>
-                    <div className="space-y-3 mb-6">
+                    <div className="space-y-3 mb-2">
                       {service.benefits.map((benefit, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start gap-3 group/item"
-                        >
+                        <div key={idx} className="flex items-start gap-3">
                           <div
-                            className={`w-6 h-6 ${colors.iconBg} rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform duration-300 shadow-md`}
+                            className={`w-6 h-6 ${colors.iconBg} rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 shadow-md`}
                           >
                             <ChevronRight
                               className={`w-3 h-3 ${colors.iconColor}`}
@@ -892,7 +1102,7 @@ const LandingPage = () => {
             </div>
 
             <div className="space-y-6">
-              {testimonials.slice(1, 3).map((testimonial) => (
+              {(testimonials || []).slice(1, 3).map((testimonial) => (
                 <div
                   key={testimonial.id}
                   className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20"
@@ -918,6 +1128,112 @@ const LandingPage = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: Testimonials (Tab 3) — Layout C (2 featured + scroll) */}
+      <section
+        id="testimonials"
+        className="py-24 bg-navy text-white relative overflow-hidden"
+      >
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-16 left-12 w-80 h-80 bg-gold/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-16 right-12 w-96 h-96 bg-sage/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-14">
+            <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">
+              Testimonials
+            </div>
+            <h2
+              className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
+              Real Transformations from
+              <br />
+              Purpose-Driven Souls
+            </h2>
+            <p className="text-xl text-white/85 max-w-4xl mx-auto leading-relaxed">
+              A few words from clients, challenge participants, and community
+              members who experienced meaningful shifts through Ken’s guidance.
+            </p>
+          </div>
+
+          {/* Featured (2) */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            {featuredTestimonials.map((t) => (
+              <div
+                key={t.id}
+                className="rounded-3xl border border-white/15 bg-white/10 backdrop-blur-md shadow-2xl p-8 md:p-10"
+              >
+                <div className="flex items-center justify-between gap-4 mb-6">
+                  <span className={badgeStyles(t.section)}>{t.section}</span>
+                  {t.now ? (
+                    <span className="text-xs text-white/70">
+                      <span className="text-white/80">{t.title}</span>
+                      &nbsp;|&nbsp;
+                      <span className="text-gold font-semibold">{t.now}</span>
+                    </span>
+                  ) : (
+                    <span className="text-xs text-white/70">{t.title || ""}</span>
+                  )}
+                </div>
+
+                <p className="text-white/90 leading-relaxed text-lg md:text-xl italic">
+                  &quot;{t.quote}&quot;
+                </p>
+
+                <div className="mt-8 pt-6 border-t border-white/10">
+                  <p className="text-white font-semibold text-lg">
+                    {t.name || "Community Member"}
+                  </p>
+                  {t.name ? (
+                    <p className="text-white/70 text-sm">
+                      {t.title}
+                      {t.now ? ` · ${t.now}` : ""}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Horizontal scroll row */}
+          <div className="relative">
+            <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
+              {scrollTestimonials.map((t) => (
+                <div
+                  key={t.id}
+                  className="min-w-[320px] md:min-w-[420px] snap-start rounded-2xl border border-white/12 bg-white/5 backdrop-blur-md p-6 shadow-lg hover:bg-white/8 transition"
+                >
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <span className={badgeStyles(t.section)}>{t.section}</span>
+                  </div>
+
+                  <p className="text-white/85 leading-relaxed">
+                    &quot;{t.quote}&quot;
+                  </p>
+
+                  <div className="mt-6 pt-4 border-t border-white/10">
+                    <p className="text-white font-semibold">
+                      {t.name || "Community Member"}
+                    </p>
+                    {(t.title || t.now) && (
+                      <p className="text-white/65 text-xs mt-1">
+                        {t.title || ""}
+                        {t.now ? ` · ${t.now}` : ""}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-white/50 text-sm mt-4 text-center">
+              Swipe / scroll to read more stories.
+            </p>
           </div>
         </div>
       </section>
@@ -1126,7 +1442,9 @@ const LandingPage = () => {
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-white/10 hover:bg-gold/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                     >
-                      <IconComponent className="w-5 h-5" />
+                      {IconComponent ? (
+                        <IconComponent className="w-5 h-5" />
+                      ) : null}
                     </a>
                   );
                 })}
@@ -1142,7 +1460,7 @@ const LandingPage = () => {
                 Quick Links
               </h4>
               <ul className="space-y-2">
-                {navigationLinks.map((link) => (
+                {navLinks.map((link) => (
                   <li key={link.label}>
                     <button
                       onClick={() => scrollToSection(link.href)}
@@ -1181,8 +1499,7 @@ const LandingPage = () => {
 
           <div className="border-t border-white/10 pt-8 text-center text-white/60 text-sm">
             <p>
-              &copy; {new Date().getFullYear()} Souls Circle. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} Souls Circle. All rights reserved.
             </p>
           </div>
         </div>
