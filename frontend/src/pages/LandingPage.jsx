@@ -83,6 +83,27 @@ const LandingPage = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 768) setIsMobileMenuOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) element.scrollIntoView({ behavior: "smooth" });
@@ -289,19 +310,19 @@ const LandingPage = () => {
   const featuredStory = storyQuotes.find((t) => t.featured) || storyQuotes[0];
 
   return (
-    <div className="landing-page">
+    <div className="landing-page w-full overflow-x-hidden">
       {/* Navigation */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? "bg-navy/90 backdrop-blur-md shadow-md" : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex items-center justify-between">
+          <div className="flex items-center gap-3 min-w-0">
             <img
               src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/repyviae_sclogo-removebg-preview.png"
               alt="Souls Circle"
-              className="h-16 w-auto drop-shadow-lg"
+              className="h-14 sm:h-16 w-auto drop-shadow-lg"
             />
           </div>
 
@@ -310,8 +331,9 @@ const LandingPage = () => {
             className="md:hidden inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white font-semibold"
             onClick={() => setIsMobileMenuOpen((v) => !v)}
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
-            Menu
+            {isMobileMenuOpen ? "Close" : "Menu"}
           </button>
 
           {/* Desktop nav */}
@@ -330,7 +352,7 @@ const LandingPage = () => {
 
         {/* Mobile dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden px-6 pb-5">
+          <div className="md:hidden px-4 sm:px-6 pb-5">
             <div className="mt-3 rounded-2xl border border-white/10 bg-navy/95 backdrop-blur-md p-3 shadow-lg">
               {navigationLinks.map((link) => (
                 <button
@@ -366,7 +388,7 @@ const LandingPage = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.55)_60%,rgba(0,0,0,0.7)_100%)] pointer-events-none" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 pt-28 pb-20 md:py-32 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-28 pb-20 md:py-32 text-center">
           <h1
             className="text-4xl sm:text-5xl md:text-8xl font-bold mb-8 leading-tight animate-fade-in-up"
             style={{ fontFamily: "Playfair Display", color: "#F9FAFB" }}
@@ -377,7 +399,7 @@ const LandingPage = () => {
           </h1>
 
           <p
-            className="text-lg sm:text-xl md:text-3xl mb-12 max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium"
+            className="text-lg sm:text-xl md:text-3xl mb-10 md:mb-12 max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium"
             style={{ animationDelay: "0.2s", color: "rgba(249,250,251,0.9)" }}
           >
             Helping successful spiritual entrepreneurs transmute their final energetic blocks, unlock their full power,
@@ -386,10 +408,10 @@ const LandingPage = () => {
 
           {/* Social Proof (ONLY what’s in the brief) */}
           <div
-            className="mx-auto mb-12 flex max-w-xl items-center gap-4 rounded-full bg-white/90 px-5 py-3 text-left shadow-lg backdrop-blur-sm animate-fade-in-up"
+            className="mx-auto mb-10 md:mb-12 flex w-full max-w-xl items-center gap-4 rounded-full bg-white/90 px-5 py-3 text-left shadow-lg backdrop-blur-sm animate-fade-in-up"
             style={{ animationDelay: "0.4s" }}
           >
-            <div className="flex -space-x-2">
+            <div className="flex -space-x-2 flex-shrink-0">
               <img
                 src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80"
                 alt="Community member"
@@ -406,13 +428,13 @@ const LandingPage = () => {
                 className="h-9 w-9 rounded-full border-2 border-white object-cover"
               />
             </div>
-            <div className="flex-1">
-              <p className="text-sm font-semibold text-navy">250+ Purpose-Driven Souls Impacted</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-navy truncate">250+ Purpose-Driven Souls Impacted</p>
             </div>
           </div>
 
           <div
-            className="max-w-3xl mx-auto rounded-[40px] border border-white/70 bg-slate-900/80 backdrop-blur-md p-8 md:p-10 shadow-2xl animate-fade-in-up"
+            className="w-full max-w-3xl mx-auto rounded-[40px] border border-white/70 bg-slate-900/80 backdrop-blur-md p-7 sm:p-8 md:p-10 shadow-2xl animate-fade-in-up"
             style={{ animationDelay: "0.6s" }}
           >
             <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
@@ -436,9 +458,9 @@ const LandingPage = () => {
 
       {/* Section 2: Story / About */}
       <section id="story" className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
-            <div className="order-1">
+            <div className="order-1 min-w-0">
               <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                 <img
                   src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/v1jts1vn_20250311_130413.jpg"
@@ -486,7 +508,7 @@ const LandingPage = () => {
               </div>
             </div>
 
-            <div className="order-2">
+            <div className="order-2 min-w-0">
               <div className="inline-block mb-4 md:mb-6 text-sage font-bold text-base tracking-wider uppercase">MY STORY</div>
 
               <h2
@@ -576,7 +598,7 @@ const LandingPage = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-sage/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
 
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-10 md:mb-12">
             <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">
               Free 3-Day Live Challenge
@@ -618,7 +640,7 @@ const LandingPage = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-12 md:py-8 text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+              className="w-full sm:w-auto bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-12 md:py-8 text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
               onClick={() => (window.location.href = externalLinks.challengeRegistration)}
             >
               Join the FREE 3-Day Challenge
@@ -629,7 +651,7 @@ const LandingPage = () => {
 
           {challengeQuotes.length > 0 && (
             <div className="mt-12 md:mt-16">
-              <div className="grid lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {challengeQuotes.slice(0, 2).map((t) => (
                   <QuoteCard key={t.id} quote={t.quote} name={t.name} title={t.title} now={t.now} />
                 ))}
@@ -641,7 +663,7 @@ const LandingPage = () => {
 
       {/* Section 4: Work With Me */}
       <section id="work-with-me" className="py-16 md:py-24 bg-warm-white border-t border-slate-200">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10">
             <div className="inline-block mb-3 text-sage font-semibold text-sm tracking-wider uppercase">
               Personalized Support
@@ -656,30 +678,30 @@ const LandingPage = () => {
 
           <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 px-6 sm:px-8 md:px-12 py-8 md:py-10 space-y-6">
             <ul className="space-y-4 text-base md:text-lg text-charcoal leading-relaxed">
-              <li className="flex items-start gap-3">
-                <span className="mt-1">
+              <li className="flex items-start gap-3 min-w-0">
+                <span className="mt-1 flex-shrink-0">
                   <ChevronRight className="w-5 h-5 text-sage" />
                 </span>
-                <span>
+                <span className="min-w-0">
                   <span className="font-semibold">Go straight to the root.</span> I will read your energetic field to
                   pinpoint the specific root cause of your most persistent blocks and the &quot;Source Code&quot;
                   patterns keeping you stuck.
                 </span>
               </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1">
+              <li className="flex items-start gap-3 min-w-0">
+                <span className="mt-1 flex-shrink-0">
                   <ChevronRight className="w-5 h-5 text-sage" />
                 </span>
-                <span>
+                <span className="min-w-0">
                   <span className="font-semibold">Get Clarity.</span> Receive direct, spirit-led guidance on exactly what
                   is holding you back on your unique path, so you stop guessing and know where to focus your energy next.
                 </span>
               </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1">
+              <li className="flex items-start gap-3 min-w-0">
+                <span className="mt-1 flex-shrink-0">
                   <ChevronRight className="w-5 h-5 text-sage" />
                 </span>
-                <span>
+                <span className="min-w-0">
                   <span className="font-semibold">Map the Path Forward.</span> We will assess your readiness for the
                   deeper work. If we are a match, I will map out how my Channeled 3-Step Process can help you resolve
                   these blocks so you can fulfill your mission at the highest level.
@@ -690,7 +712,7 @@ const LandingPage = () => {
             <div className="text-center pt-2">
               <Button
                 size="lg"
-                className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="w-full sm:w-auto bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 onClick={() => {
                   const url =
                     externalLinks.energyReading || externalLinks.oneOnOneMentorship || externalLinks.challengeRegistration;
@@ -704,7 +726,7 @@ const LandingPage = () => {
 
             {workWithMeQuotes.length > 0 && (
               <div className="pt-6">
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {workWithMeQuotes.slice(0, 2).map((t) => (
                     <QuoteCardLight key={t.id} quote={t.quote} name={t.name} title={t.title} now={t.now} />
                   ))}
@@ -717,7 +739,7 @@ const LandingPage = () => {
 
       {/* Section 5: 1:1 Offers */}
       <section id="mentorship" className="py-16 md:py-24 bg-warm-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4 text-sage font-semibold text-sm tracking-wider uppercase">
               High-Level Mentorship
@@ -733,7 +755,7 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12">
             {oneOnOneServices.map((service) => {
               const IconComponent = iconMap[service.icon];
               return (
@@ -748,19 +770,17 @@ const LandingPage = () => {
                     <CardTitle className="text-2xl font-bold text-navy mb-1" style={{ fontFamily: "Playfair Display" }}>
                       {service.title}
                     </CardTitle>
-                    {service.subtitle ? (
-                      <CardDescription className="text-charcoal/70">{service.subtitle}</CardDescription>
-                    ) : null}
+                    {service.subtitle ? <CardDescription className="text-charcoal/70">{service.subtitle}</CardDescription> : null}
                   </CardHeader>
                   <CardContent>
                     <p className="text-charcoal/90 mb-6 leading-relaxed font-medium">{service.description}</p>
                     <div className="space-y-3">
                       {service.benefits.map((benefit, idx) => (
-                        <div key={idx} className="flex items-start gap-3">
+                        <div key={idx} className="flex items-start gap-3 min-w-0">
                           <div className="w-6 h-6 bg-sage rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                             <ChevronRight className="w-3 h-3 text-white" />
                           </div>
-                          <span className="text-sm text-charcoal/90 font-medium">{benefit}</span>
+                          <span className="text-sm text-charcoal/90 font-medium min-w-0">{benefit}</span>
                         </div>
                       ))}
                     </div>
@@ -773,7 +793,7 @@ const LandingPage = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="bg-navy hover:bg-navy/90 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="w-full sm:w-auto bg-navy hover:bg-navy/90 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               onClick={() => (window.location.href = externalLinks.oneOnOneMentorship)}
             >
               Explore 1:1 Mentorship
@@ -785,7 +805,7 @@ const LandingPage = () => {
 
       {/* Section 6: Live Events */}
       <section id="events" className="py-16 md:py-24 bg-navy text-white">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4 text-gold font-semibold text-sm tracking-wider uppercase">Live Events</div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight text-white" style={{ fontFamily: "Playfair Display" }}>
@@ -797,16 +817,18 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12">
             {upcomingEvents.map((event) => (
               <Card
                 key={event.id}
                 className="bg-gradient-to-br from-slate-900/60 to-slate-800/60 border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300 text-white"
               >
                 <CardHeader>
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="px-3 py-1 bg-gold/15 text-gold rounded-full text-xs font-semibold">{event.type}</div>
-                    <Calendar className="w-5 h-5 text-gold" />
+                  <div className="flex items-start justify-between mb-3 gap-3">
+                    <div className="px-3 py-1 bg-gold/15 text-gold rounded-full text-xs font-semibold">
+                      {event.type}
+                    </div>
+                    <Calendar className="w-5 h-5 text-gold flex-shrink-0" />
                   </div>
                   <CardTitle className="text-2xl font-bold text-white" style={{ fontFamily: "Playfair Display" }}>
                     {event.title}
@@ -825,7 +847,7 @@ const LandingPage = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="w-full sm:w-auto bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               onClick={() => (window.location.href = externalLinks.upcomingEvents)}
             >
               Browse Upcoming Events
@@ -834,7 +856,7 @@ const LandingPage = () => {
           </div>
 
           {eventsQuotes.length > 0 && (
-            <div className="mt-12 md:mt-16 grid md:grid-cols-2 gap-6">
+            <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
               {eventsQuotes.slice(0, 4).map((t) => (
                 <QuoteCard key={t.id} quote={t.quote} name={t.name} title={t.title} now={t.now} />
               ))}
@@ -854,9 +876,9 @@ const LandingPage = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-dark-grey via-dark-grey/95 to-dark-grey/90" />
         </div>
 
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
-            <div>
+            <div className="min-w-0">
               <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">Join The Family</div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight" style={{ fontFamily: "Playfair Display" }}>
                 Finally,
@@ -874,18 +896,18 @@ const LandingPage = () => {
                   'Your Spiritual Toolkit: A library of practical tools, meditations, and my 21-day "Activate the Power Within" challenge.',
                   "Peer-to-Peer Connection: Connect & collaborate with a network of peers who actually speak your language.",
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                  <div key={index} className="flex items-start gap-3 min-w-0">
                     <div className="w-7 h-7 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ChevronRight className="w-5 h-5 text-gold" />
                     </div>
-                    <span className="text-white/90 text-sm md:text-base leading-relaxed">{item}</span>
+                    <span className="text-white/90 text-sm md:text-base leading-relaxed min-w-0">{item}</span>
                   </div>
                 ))}
               </div>
 
               <Button
                 size="lg"
-                className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-base sm:text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="w-full sm:w-auto bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-base sm:text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 onClick={() => (window.location.href = externalLinks.soulCircleFamily)}
               >
                 JOIN THE FAMILY
@@ -893,11 +915,11 @@ const LandingPage = () => {
               </Button>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-5 min-w-0">
               {communityQuotes.slice(0, 2).map((t) => (
                 <div key={t.id} className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                   <p className="text-white/90 italic mb-4 leading-relaxed">&quot;{t.quote}&quot;</p>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-semibold text-white">{t.name || "Community Member"}</p>
                     {(t.title || t.now) && (
                       <p className="text-sm text-white/60">
@@ -915,7 +937,7 @@ const LandingPage = () => {
 
       {/* Section 8: Insights */}
       <section id="resources" className="py-16 md:py-24 bg-warm-white">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">Insights</div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
@@ -929,7 +951,7 @@ const LandingPage = () => {
             <h3 className="text-2xl font-bold text-navy mb-8" style={{ fontFamily: "Playfair Display" }}>
               Latest YouTube Videos
             </h3>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               {youtubVideos.map((video) => (
                 <Card
                   key={video.id}
@@ -969,7 +991,7 @@ const LandingPage = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full transition-all duration-300"
+                className="w-full sm:w-auto border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full transition-all duration-300"
                 onClick={() => (window.location.href = externalLinks.youtube)}
               >
                 Watch More on YouTube
@@ -982,7 +1004,7 @@ const LandingPage = () => {
             <h3 className="text-2xl md:text-3xl font-bold text-navy mb-10" style={{ fontFamily: "Playfair Display" }}>
               Latest Articles
             </h3>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               {blogPosts.map((post) => (
                 <Card
                   key={post.id}
@@ -1021,7 +1043,7 @@ const LandingPage = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full transition-all duration-300"
+                className="w-full sm:w-auto border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full transition-all duration-300"
                 onClick={() => (window.location.href = externalLinks.blog)}
               >
                 Read More Articles
@@ -1033,7 +1055,7 @@ const LandingPage = () => {
 
       {/* Section 9: 7-Day Challenge */}
       <section id="7-day-challenge" className="py-16 md:py-24 bg-white border-t border-slate-200">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 md:mb-12">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
               Experience a Shift Daily. For Free.
@@ -1057,11 +1079,11 @@ const LandingPage = () => {
               <ul className="space-y-3">
                 {["Feeling connected", "Boosted energy", "Feeling powerful", "Increased confidence", "Groundedness and presence"].map(
                   (item) => (
-                    <li key={item} className="flex items-start gap-3">
+                    <li key={item} className="flex items-start gap-3 min-w-0">
                       <div className="w-6 h-6 bg-sage rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                         <ChevronRight className="w-3 h-3 text-white" />
                       </div>
-                      <span className="text-charcoal/90">{item}</span>
+                      <span className="text-charcoal/90 min-w-0">{item}</span>
                     </li>
                   )
                 )}
@@ -1071,7 +1093,7 @@ const LandingPage = () => {
             <div className="text-center mt-10">
               <Button
                 size="lg"
-                className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-12 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="w-full sm:w-auto bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-12 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 onClick={() => (window.location.href = externalLinks.challengeRegistration)}
               >
                 SEND ME DAY 1
@@ -1080,7 +1102,7 @@ const LandingPage = () => {
             </div>
 
             {sevenDayQuotes.length > 0 && (
-              <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+              <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {sevenDayQuotes.slice(0, 3).map((t) => (
                   <QuoteCardLight key={t.id} quote={t.quote} name={t.name} title={t.title} now={t.now} />
                 ))}
@@ -1101,7 +1123,7 @@ const LandingPage = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy/95 to-navy" />
         </div>
 
-        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight" style={{ fontFamily: "Playfair Display" }}>
             Ready to Resolve Your Soul Blueprint
             <br />
@@ -1113,7 +1135,7 @@ const LandingPage = () => {
           </p>
           <Button
             size="lg"
-            className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-12 md:py-8 text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+            className="w-full sm:w-auto bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-12 md:py-8 text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
             onClick={() => (window.location.href = externalLinks.challengeRegistration)}
           >
             Join the FREE 3-Day Challenge
@@ -1124,7 +1146,7 @@ const LandingPage = () => {
 
       {/* Footer */}
       <footer className="bg-dark-grey text-white py-16">
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center">
             <h4 className="font-bold text-2xl mb-3" style={{ fontFamily: "Playfair Display" }}>
               Stay Connected
@@ -1135,7 +1157,7 @@ const LandingPage = () => {
               <input
                 type="email"
                 placeholder="Your email"
-                className="w-full sm:w-[360px] px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-gold transition-colors duration-300"
+                className="w-full sm:w-[360px] max-w-full px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-gold transition-colors duration-300"
               />
               <Button className="w-full sm:w-auto bg-gold hover:bg-gold/90 text-navy rounded-full font-semibold px-8 py-3">
                 Subscribe
