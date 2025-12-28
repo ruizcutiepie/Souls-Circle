@@ -75,6 +75,7 @@ const QuoteCardLight = ({ quote, name, title, now }) => {
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isStoryExpanded, setIsStoryExpanded] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -303,6 +304,17 @@ const LandingPage = () => {
               className="h-16 w-auto drop-shadow-lg"
             />
           </div>
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white font-semibold"
+            onClick={() => setIsMobileMenuOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            Menu
+          </button>
+
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {navigationLinks.map((link) => (
               <button
@@ -315,6 +327,26 @@ const LandingPage = () => {
             ))}
           </div>
         </div>
+
+        {/* Mobile dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden px-6 pb-5">
+            <div className="mt-3 rounded-2xl border border-white/10 bg-navy/95 backdrop-blur-md p-3 shadow-lg">
+              {navigationLinks.map((link) => (
+                <button
+                  key={link.label}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    scrollToSection(link.href);
+                  }}
+                  className="w-full text-left px-4 py-3 rounded-xl text-white font-semibold hover:bg-white/10 transition"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Section 1: Hero with VIDEO background */}
@@ -334,9 +366,9 @@ const LandingPage = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.55)_60%,rgba(0,0,0,0.7)_100%)] pointer-events-none" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 pt-28 pb-20 md:py-32 text-center">
           <h1
-            className="text-6xl md:text-8xl font-bold mb-8 leading-tight animate-fade-in-up"
+            className="text-4xl sm:text-5xl md:text-8xl font-bold mb-8 leading-tight animate-fade-in-up"
             style={{ fontFamily: "Playfair Display", color: "#F9FAFB" }}
           >
             You&apos;ve Done The Work.
@@ -345,7 +377,7 @@ const LandingPage = () => {
           </h1>
 
           <p
-            className="text-2xl md:text-3xl mb-12 max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium"
+            className="text-lg sm:text-xl md:text-3xl mb-12 max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium"
             style={{ animationDelay: "0.2s", color: "rgba(249,250,251,0.9)" }}
           >
             Helping successful spiritual entrepreneurs transmute their final energetic blocks, unlock their full power,
@@ -380,22 +412,19 @@ const LandingPage = () => {
           </div>
 
           <div
-            className="max-w-3xl mx-auto rounded-[40px] border border-white/70 bg-slate-900/80 backdrop-blur-md p-10 shadow-2xl animate-fade-in-up"
+            className="max-w-3xl mx-auto rounded-[40px] border border-white/70 bg-slate-900/80 backdrop-blur-md p-8 md:p-10 shadow-2xl animate-fade-in-up"
             style={{ animationDelay: "0.6s" }}
           >
-            <h3
-              className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight"
-              style={{ fontFamily: "Playfair Display" }}
-            >
+            <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
               Connect to the Power Within in 15 Minutes
             </h3>
-            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
+            <p className="text-base md:text-xl text-white/90 mb-8 leading-relaxed">
               Don&apos;t settle for generic tools. Take the 30-second quiz to receive a premium Activation Meditation
               tailored to your goals—the same caliber of tool my private clients use.
             </p>
             <Button
               size="lg"
-              className="w-full bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="w-full bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               onClick={() => (window.location.href = externalLinks.challengeRegistration)}
             >
               GET MY FREE TAILORED MEDITATION
@@ -405,26 +434,25 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 2: Story / About (FULL brief copy + testimonials fold until Read more) */}
-      <section id="story" className="py-24 bg-white">
+      {/* Section 2: Story / About */}
+      <section id="story" className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
             <div className="order-1">
               <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                 <img
                   src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/v1jts1vn_20250311_130413.jpg"
                   alt="Ken Franceschi"
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-[360px] sm:h-[420px] md:h-[500px] object-cover"
                 />
               </div>
 
-              {/* Testimonials fold until "Read more" for a cleaner design */}
+              {/* Testimonials fold until "Read more" */}
               <div
                 className={`mt-8 overflow-hidden transition-all duration-500 ${
                   isStoryExpanded ? "max-h-[1400px] opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
-                {/* Featured quote */}
                 {featuredStory ? (
                   <div className="bg-warm-white p-6 rounded-xl shadow-lg border-l-4 border-gold">
                     <p className="text-charcoal italic leading-relaxed">&quot;{featuredStory.quote}&quot;</p>
@@ -438,7 +466,6 @@ const LandingPage = () => {
                   </div>
                 ) : null}
 
-                {/* Two more */}
                 <div className="mt-6 grid gap-4">
                   {storyQuotes
                     .filter((t) => t.id !== featuredStory?.id)
@@ -460,18 +487,18 @@ const LandingPage = () => {
             </div>
 
             <div className="order-2">
-              <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">MY STORY</div>
+              <div className="inline-block mb-4 md:mb-6 text-sage font-bold text-base tracking-wider uppercase">MY STORY</div>
 
               <h2
-                className="text-4xl md:text-6xl font-bold text-navy mb-8 leading-tight"
+                className="text-3xl sm:text-4xl md:text-6xl font-bold text-navy mb-6 md:mb-8 leading-tight"
                 style={{ fontFamily: "Playfair Display" }}
               >
                 I know what it&apos;s like to do “all the right things”
-                <br />
+                <br className="hidden sm:block" />
                 and still feel a missing piece.
               </h2>
 
-              <div className="space-y-5 text-lg text-charcoal leading-relaxed">
+              <div className="space-y-5 text-base sm:text-lg text-charcoal leading-relaxed">
                 <p>
                   My journey started in the clinical field. I was driven by a desire to help, but I quickly realized we
                   were often treating symptoms rather than root causes.
@@ -509,15 +536,15 @@ const LandingPage = () => {
                     </p>
                     <p>
                       That question led me into years of hermiting and deep channeling the Akashic Records. I explored
-                      many of my past lives and discovered something I&apos;ve never heard anyone else talk about.
-                      While I was “maintaining” my Energy Field, my Soul Blueprint (my &quot;source code&quot;) was still
-                      running an old story. I was pouring pure water into a &quot;rusty cup.&quot;
+                      many of my past lives and discovered something I&apos;ve never heard anyone else talk about. While I
+                      was “maintaining” my Energy Field, my Soul Blueprint (my &quot;source code&quot;) was still running
+                      an old story. I was pouring pure water into a &quot;rusty cup.&quot;
                     </p>
                     <p>
                       Once I learned to resolve the Blueprint itself, the struggle dissolved. My intuition became crystal
                       clear, I stepped fully into my full authentic power and mission.
                     </p>
-                    <p className="text-xl font-semibold text-navy">Now, I’m here to help you do the same.</p>
+                    <p className="text-lg sm:text-xl font-semibold text-navy">Now, I’m here to help you do the same.</p>
                     <p className="font-semibold text-navy">
                       My mission is to create a Butterfly Effect: by helping leaders like you unlock your full power, we
                       shift the consciousness of the entire planet together.
@@ -544,29 +571,29 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 3: Challenge (NO date, NO extra button, copy true to brief) */}
-      <section id="challenge" className="py-24 bg-navy text-white relative overflow-hidden">
+      {/* Section 3: Challenge */}
+      <section id="challenge" className="py-16 md:py-24 bg-navy text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-sage/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10 md:mb-12">
             <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">
               Free 3-Day Live Challenge
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
               Mission Block Clarity
               <br />
               <span className="text-gold">3-Day Challenge</span>
             </h2>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-medium">
               Discover how the unresolved <span className="font-bold text-gold">Soul Blueprint</span> is stopping you
               from completing your mission to your greatest potential.
             </p>
-            <p className="text-lg text-gold font-semibold mt-4">LIVE with Ken Franceschi</p>
+            <p className="text-base md:text-lg text-gold font-semibold mt-4">LIVE with Ken Franceschi</p>
           </div>
 
-          <div className="max-w-4xl mx-auto mb-12 bg-slate-900/70 rounded-3xl border border-gold/30 shadow-2xl px-8 md:px-12 py-10 text-center">
+          <div className="max-w-4xl mx-auto mb-10 md:mb-12 bg-slate-900/70 rounded-3xl border border-gold/30 shadow-2xl px-6 sm:px-8 md:px-12 py-8 md:py-10 text-center">
             <div className="space-y-5 text-base md:text-lg text-white/90 leading-relaxed">
               <p>
                 Through years of deep channeling the Akashic Records, I uncovered the true mechanics of why so many
@@ -591,18 +618,17 @@ const LandingPage = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="bg-gold hover:bg-gold/90 text-navy px-12 py-8 text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+              className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-12 md:py-8 text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
               onClick={() => (window.location.href = externalLinks.challengeRegistration)}
             >
               Join the FREE 3-Day Challenge
               <ArrowRight className="ml-3 w-7 h-7" />
             </Button>
-            <p className="text-white/70 mt-6 text-lg">Discover the Missing Link - Limited spots available.</p>
+            <p className="text-white/70 mt-6 text-base md:text-lg">Discover the Missing Link - Limited spots available.</p>
           </div>
 
-          {/* Challenge testimonials */}
           {challengeQuotes.length > 0 && (
-            <div className="mt-16">
+            <div className="mt-12 md:mt-16">
               <div className="grid lg:grid-cols-2 gap-6">
                 {challengeQuotes.slice(0, 2).map((t) => (
                   <QuoteCard key={t.id} quote={t.quote} name={t.name} title={t.title} now={t.now} />
@@ -613,25 +639,22 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 4: Work With Me – Energy Reading (CTA GOLD, wider block, no glass) */}
-      <section id="work-with-me" className="py-24 bg-warm-white border-t border-slate-200">
+      {/* Section 4: Work With Me */}
+      <section id="work-with-me" className="py-16 md:py-24 bg-warm-white border-t border-slate-200">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-10">
             <div className="inline-block mb-3 text-sage font-semibold text-sm tracking-wider uppercase">
               Personalized Support
             </div>
-            <h2
-              className="text-4xl md:text-5xl font-bold text-navy mb-4 leading-tight"
-              style={{ fontFamily: "Playfair Display" }}
-            >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
               Get Immediate Clarity.
               <br />
               Let&apos;s Pinpoint the Root Cause.
             </h2>
-            <p className="text-xl text-charcoal/80">Book a 1:1 Energy Reading &amp; Discovery Call</p>
+            <p className="text-lg md:text-xl text-charcoal/80">Book a 1:1 Energy Reading &amp; Discovery Call</p>
           </div>
 
-          <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 px-8 md:px-12 py-10 space-y-6">
+          <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 px-6 sm:px-8 md:px-12 py-8 md:py-10 space-y-6">
             <ul className="space-y-4 text-base md:text-lg text-charcoal leading-relaxed">
               <li className="flex items-start gap-3">
                 <span className="mt-1">
@@ -667,7 +690,7 @@ const LandingPage = () => {
             <div className="text-center pt-2">
               <Button
                 size="lg"
-                className="bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 onClick={() => {
                   const url =
                     externalLinks.energyReading || externalLinks.oneOnOneMentorship || externalLinks.challengeRegistration;
@@ -679,7 +702,6 @@ const LandingPage = () => {
               </Button>
             </div>
 
-            {/* Work-with-me testimonials */}
             {workWithMeQuotes.length > 0 && (
               <div className="pt-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -693,28 +715,25 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 5: 1:1 Offers (remove glass look) */}
-      <section id="mentorship" className="py-24 bg-warm-white border-t border-slate-200">
+      {/* Section 5: 1:1 Offers */}
+      <section id="mentorship" className="py-16 md:py-24 bg-warm-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4 text-sage font-semibold text-sm tracking-wider uppercase">
               High-Level Mentorship
             </div>
-            <h2
-              className="text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight"
-              style={{ fontFamily: "Playfair Display" }}
-            >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
               For Direct Guidance and
               <br />
               High-Level Support
             </h2>
-            <p className="text-xl text-charcoal max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-charcoal max-w-3xl mx-auto leading-relaxed">
               Ready for deeper, personalized work? I offer targeted 1:1 sessions for clarity, energy clearing, and
               spiritual business mentorship.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12">
             {oneOnOneServices.map((service) => {
               const IconComponent = iconMap[service.icon];
               return (
@@ -765,14 +784,14 @@ const LandingPage = () => {
       </section>
 
       {/* Section 6: Live Events */}
-      <section id="events" className="py-24 bg-navy text-white">
+      <section id="events" className="py-16 md:py-24 bg-navy text-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4 text-gold font-semibold text-sm tracking-wider uppercase">Live Events</div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white" style={{ fontFamily: "Playfair Display" }}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight text-white" style={{ fontFamily: "Playfair Display" }}>
               Join Us for Live Transformation.
             </h2>
-            <p className="text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed">
               Whether you need clarity on your blocks, coaching on your mission, or a deep energetic reset—our live events
               are where the shift happens.
             </p>
@@ -806,7 +825,7 @@ const LandingPage = () => {
           <div className="text-center">
             <Button
               size="lg"
-              className="bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               onClick={() => (window.location.href = externalLinks.upcomingEvents)}
             >
               Browse Upcoming Events
@@ -815,7 +834,7 @@ const LandingPage = () => {
           </div>
 
           {eventsQuotes.length > 0 && (
-            <div className="mt-16 grid md:grid-cols-2 gap-6">
+            <div className="mt-12 md:mt-16 grid md:grid-cols-2 gap-6">
               {eventsQuotes.slice(0, 4).map((t) => (
                 <QuoteCard key={t.id} quote={t.quote} name={t.name} title={t.title} now={t.now} />
               ))}
@@ -824,8 +843,8 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 7: Community (brief-true copy + more compact) */}
-      <section id="community" className="py-16 md:py-20 bg-dark-grey text-white relative overflow-hidden">
+      {/* Section 7: Community */}
+      <section id="community" className="py-14 md:py-20 bg-dark-grey text-white relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1496008889433-9b938d8ac880?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxlbmVyZ3klMjBoZWFsaW5nfGVufDB8fHx8MTc1OTk1ODMyNnww&ixlib=rb-4.1.0&q=85"
@@ -839,10 +858,10 @@ const LandingPage = () => {
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
             <div>
               <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">Join The Family</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-5 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight" style={{ fontFamily: "Playfair Display" }}>
                 Finally,
               </h2>
-              <p className="text-lg md:text-xl text-white/90 mb-7 leading-relaxed font-medium">
+              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-7 leading-relaxed font-medium">
                 A dedicated space for spiritual entrepreneurs, practitioners, and change-makers to connect, collaborate,
                 and receive the guidance &amp; energetic support needed to fuel your mission.
               </p>
@@ -866,7 +885,7 @@ const LandingPage = () => {
 
               <Button
                 size="lg"
-                className="bg-gold hover:bg-gold/90 text-navy px-10 py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-base sm:text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 onClick={() => (window.location.href = externalLinks.soulCircleFamily)}
               >
                 JOIN THE FAMILY
@@ -894,12 +913,12 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 8: Insights (rename Resources -> Insights, brief-true headings) */}
-      <section id="resources" className="py-24 bg-warm-white">
+      {/* Section 8: Insights */}
+      <section id="resources" className="py-16 md:py-24 bg-warm-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">Insights</div>
-            <h2 className="text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
               Channeled Wisdom
               <br />&amp; Coaching Insights
             </h2>
@@ -910,7 +929,7 @@ const LandingPage = () => {
             <h3 className="text-2xl font-bold text-navy mb-8" style={{ fontFamily: "Playfair Display" }}>
               Latest YouTube Videos
             </h3>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               {youtubVideos.map((video) => (
                 <Card
                   key={video.id}
@@ -950,7 +969,7 @@ const LandingPage = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-7 text-xl font-bold rounded-full transition-all duration-300"
+                className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full transition-all duration-300"
                 onClick={() => (window.location.href = externalLinks.youtube)}
               >
                 Watch More on YouTube
@@ -959,11 +978,11 @@ const LandingPage = () => {
           </div>
 
           {/* Articles */}
-          <div className="mt-20">
+          <div className="mt-16 md:mt-20">
             <h3 className="text-2xl md:text-3xl font-bold text-navy mb-10" style={{ fontFamily: "Playfair Display" }}>
               Latest Articles
             </h3>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
               {blogPosts.map((post) => (
                 <Card
                   key={post.id}
@@ -1002,7 +1021,7 @@ const LandingPage = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-10 py-7 text-xl font-bold rounded-full transition-all duration-300"
+                className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full transition-all duration-300"
                 onClick={() => (window.location.href = externalLinks.blog)}
               >
                 Read More Articles
@@ -1012,19 +1031,19 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 9: 7-Day Challenge (brief-true copy) */}
-      <section id="7-day-challenge" className="py-24 bg-white border-t border-slate-200">
+      {/* Section 9: 7-Day Challenge */}
+      <section id="7-day-challenge" className="py-16 md:py-24 bg-white border-t border-slate-200">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+          <div className="text-center mb-10 md:mb-12">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
               Experience a Shift Daily. For Free.
             </h2>
-            <p className="text-xl md:text-2xl text-charcoal/80 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl md:text-2xl text-charcoal/80 max-w-4xl mx-auto leading-relaxed font-medium">
               Join the 7-Day &quot;Activate the Power Within&quot; Challenge
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto bg-warm-white rounded-3xl border border-slate-200 shadow-xl px-8 md:px-12 py-10">
+          <div className="max-w-4xl mx-auto bg-warm-white rounded-3xl border border-slate-200 shadow-xl px-6 sm:px-8 md:px-12 py-8 md:py-10">
             <div className="space-y-5 text-base md:text-lg text-charcoal leading-relaxed">
               <p>Your power isn&apos;t something you find; it&apos;s something you embody.</p>
               <p>
@@ -1052,7 +1071,7 @@ const LandingPage = () => {
             <div className="text-center mt-10">
               <Button
                 size="lg"
-                className="bg-gold hover:bg-gold/90 text-navy px-12 py-7 text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-12 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 onClick={() => (window.location.href = externalLinks.challengeRegistration)}
               >
                 SEND ME DAY 1
@@ -1060,9 +1079,8 @@ const LandingPage = () => {
               </Button>
             </div>
 
-            {/* Optional: 7-day testimonials (kept minimal + aligned) */}
             {sevenDayQuotes.length > 0 && (
-              <div className="mt-12 grid md:grid-cols-3 gap-6">
+              <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {sevenDayQuotes.slice(0, 3).map((t) => (
                   <QuoteCardLight key={t.id} quote={t.quote} name={t.name} title={t.title} now={t.now} />
                 ))}
@@ -1072,8 +1090,8 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Section 10: Final CTA (removed date line) */}
-      <section className="py-24 bg-navy text-white relative overflow-hidden">
+      {/* Section 10: Final CTA */}
+      <section className="py-16 md:py-24 bg-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1542157565-4607d82cf417?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxwZWFjZWZ1bCUyMG5hdHVyZXxlbnwwfHx8fDE3NTk5NTgzMzZ8MA&ixlib=rb-4.1.0&q=85"
@@ -1084,18 +1102,18 @@ const LandingPage = () => {
         </div>
 
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight" style={{ fontFamily: "Playfair Display" }}>
             Ready to Resolve Your Soul Blueprint
             <br />
             <span className="text-gold">And Embody Your Mission?</span>
           </h2>
-          <p className="text-2xl text-white/90 mb-12 leading-relaxed font-medium max-w-4xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-10 md:mb-12 leading-relaxed font-medium max-w-4xl mx-auto">
             Join the Mission Block Clarity Challenge and discover the advanced energetic patterns keeping you from your
             highest potential.
           </p>
           <Button
             size="lg"
-            className="bg-gold hover:bg-gold/90 text-navy px-12 py-8 text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
+            className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-12 md:py-8 text-xl md:text-2xl font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
             onClick={() => (window.location.href = externalLinks.challengeRegistration)}
           >
             Join the FREE 3-Day Challenge
@@ -1104,7 +1122,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Footer (ONLY Stay Connected block; remove Quick Links + other blocks) */}
+      {/* Footer */}
       <footer className="bg-dark-grey text-white py-16">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center">
