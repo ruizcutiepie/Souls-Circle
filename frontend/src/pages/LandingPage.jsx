@@ -317,7 +317,7 @@ const LandingPage = () => {
           isScrolled ? "bg-navy/90 backdrop-blur-md shadow-md" : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <img
               src="https://customer-assets.emergentagent.com/job_biz-launchpad-7/artifacts/repyviae_sclogo-removebg-preview.png"
@@ -372,7 +372,10 @@ const LandingPage = () => {
       </nav>
 
       {/* Section 1: Hero with VIDEO background */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-warm-white">
+      <section
+        id="hero"
+        className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-warm-white"
+      >
         <div className="absolute inset-0 z-0 overflow-hidden">
           <video
             className="w-full h-full object-cover"
@@ -388,9 +391,10 @@ const LandingPage = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.55)_60%,rgba(0,0,0,0.7)_100%)] pointer-events-none" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-28 pb-20 md:py-32 text-center">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 pb-16 md:py-32 text-center">
+          {/* MOBILE: smaller + tighter so it doesn't dominate */}
           <h1
-            className="text-4xl sm:text-5xl md:text-8xl font-bold mb-8 leading-tight animate-fade-in-up"
+            className="text-3xl sm:text-5xl md:text-8xl font-bold mb-5 sm:mb-8 leading-[1.08] animate-fade-in-up"
             style={{ fontFamily: "Playfair Display", color: "#F9FAFB" }}
           >
             You&apos;ve Done The Work.
@@ -398,59 +402,67 @@ const LandingPage = () => {
             <span style={{ color: "#A3B8A2" }}>Now Step Into Your Full Mission.</span>
           </h1>
 
+          {/* MOBILE: slightly smaller + less vertical space */}
           <p
-            className="text-lg sm:text-xl md:text-3xl mb-10 md:mb-12 max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium"
+            className="text-base sm:text-xl md:text-3xl mb-8 sm:mb-10 md:mb-12 max-w-3xl md:max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium"
             style={{ animationDelay: "0.2s", color: "rgba(249,250,251,0.9)" }}
           >
             Helping successful spiritual entrepreneurs transmute their final energetic blocks, unlock their full power,
             and access the intuitive clarity needed to make their greatest impact.
           </p>
 
-          {/* Social Proof (ONLY what’s in the brief) */}
+          {/* Social Proof — MOBILE FRIENDLY (no cramped pill) */}
           <div
-            className="mx-auto mb-10 md:mb-12 flex w-full max-w-xl items-center gap-4 rounded-full bg-white/90 px-5 py-3 text-left shadow-lg backdrop-blur-sm animate-fade-in-up"
+            className="mx-auto mb-8 sm:mb-10 md:mb-12 w-full max-w-md sm:max-w-xl rounded-2xl sm:rounded-full bg-white/90 px-4 sm:px-5 py-3 text-left shadow-lg backdrop-blur-sm animate-fade-in-up"
             style={{ animationDelay: "0.4s" }}
           >
-            <div className="flex -space-x-2 flex-shrink-0">
-              <img
-                src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80"
-                alt="Community member"
-                className="h-9 w-9 rounded-full border-2 border-white object-cover"
-              />
-              <img
-                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80"
-                alt="Community member"
-                className="h-9 w-9 rounded-full border-2 border-white object-cover"
-              />
-              <img
-                src="https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=200&q=80"
-                alt="Community member"
-                className="h-9 w-9 rounded-full border-2 border-white object-cover"
-              />
-            </div>
-            <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-navy truncate">250+ Purpose-Driven Souls Impacted</p>
+            <div className="flex items-center gap-4 min-w-0">
+              <div className="flex -space-x-2 flex-shrink-0">
+                <img
+                  src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80"
+                  alt="Community member"
+                  className="h-9 w-9 rounded-full border-2 border-white object-cover"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80"
+                  alt="Community member"
+                  className="h-9 w-9 rounded-full border-2 border-white object-cover"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=200&q=80"
+                  alt="Community member"
+                  className="h-9 w-9 rounded-full border-2 border-white object-cover"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-semibold text-navy truncate">250+ Purpose-Driven Souls Impacted</p>
+              </div>
             </div>
           </div>
 
           <div
-            className="w-full max-w-3xl mx-auto rounded-[40px] border border-white/70 bg-slate-900/80 backdrop-blur-md p-7 sm:p-8 md:p-10 shadow-2xl animate-fade-in-up"
+            className="w-full max-w-3xl mx-auto rounded-3xl sm:rounded-[40px] border border-white/70 bg-slate-900/80 backdrop-blur-md p-6 sm:p-8 md:p-10 shadow-2xl animate-fade-in-up"
             style={{ animationDelay: "0.6s" }}
           >
-            <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h3
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Connect to the Power Within in 15 Minutes
             </h3>
-            <p className="text-base md:text-xl text-white/90 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
               Don&apos;t settle for generic tools. Take the 30-second quiz to receive a premium Activation Meditation
               tailored to your goals—the same caliber of tool my private clients use.
             </p>
+
+            {/* MOBILE: allow wrapping + prevent squish */}
             <Button
               size="lg"
-              className="w-full bg-gold hover:bg-gold/90 text-navy px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="w-full max-w-full bg-gold hover:bg-gold/90 text-navy px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-7 text-base sm:text-lg md:text-xl font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 whitespace-normal text-center"
               onClick={() => (window.location.href = externalLinks.challengeRegistration)}
             >
-              GET MY FREE TAILORED MEDITATION
-              <ArrowRight className="ml-2 w-6 h-6" />
+              <span className="block leading-snug">GET MY FREE TAILORED MEDITATION</span>
+              <ArrowRight className="w-6 h-6 flex-shrink-0" />
             </Button>
           </div>
         </div>
@@ -603,7 +615,10 @@ const LandingPage = () => {
             <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">
               Free 3-Day Live Challenge
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h2
+              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Mission Block Clarity
               <br />
               <span className="text-gold">3-Day Challenge</span>
@@ -668,7 +683,10 @@ const LandingPage = () => {
             <div className="inline-block mb-3 text-sage font-semibold text-sm tracking-wider uppercase">
               Personalized Support
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-4 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Get Immediate Clarity.
               <br />
               Let&apos;s Pinpoint the Root Cause.
@@ -744,7 +762,10 @@ const LandingPage = () => {
             <div className="inline-block mb-4 text-sage font-semibold text-sm tracking-wider uppercase">
               High-Level Mentorship
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               For Direct Guidance and
               <br />
               High-Level Support
@@ -770,7 +791,9 @@ const LandingPage = () => {
                     <CardTitle className="text-2xl font-bold text-navy mb-1" style={{ fontFamily: "Playfair Display" }}>
                       {service.title}
                     </CardTitle>
-                    {service.subtitle ? <CardDescription className="text-charcoal/70">{service.subtitle}</CardDescription> : null}
+                    {service.subtitle ? (
+                      <CardDescription className="text-charcoal/70">{service.subtitle}</CardDescription>
+                    ) : null}
                   </CardHeader>
                   <CardContent>
                     <p className="text-charcoal/90 mb-6 leading-relaxed font-medium">{service.description}</p>
@@ -808,7 +831,10 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4 text-gold font-semibold text-sm tracking-wider uppercase">Live Events</div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight text-white" style={{ fontFamily: "Playfair Display" }}>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight text-white"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Join Us for Live Transformation.
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed">
@@ -825,9 +851,7 @@ const LandingPage = () => {
               >
                 <CardHeader>
                   <div className="flex items-start justify-between mb-3 gap-3">
-                    <div className="px-3 py-1 bg-gold/15 text-gold rounded-full text-xs font-semibold">
-                      {event.type}
-                    </div>
+                    <div className="px-3 py-1 bg-gold/15 text-gold rounded-full text-xs font-semibold">{event.type}</div>
                     <Calendar className="w-5 h-5 text-gold flex-shrink-0" />
                   </div>
                   <CardTitle className="text-2xl font-bold text-white" style={{ fontFamily: "Playfair Display" }}>
@@ -880,7 +904,10 @@ const LandingPage = () => {
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
             <div className="min-w-0">
               <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">Join The Family</div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+              <h2
+                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight"
+                style={{ fontFamily: "Playfair Display" }}
+              >
                 Finally,
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-white/90 mb-7 leading-relaxed font-medium">
@@ -940,9 +967,13 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">Insights</div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h2
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Channeled Wisdom
-              <br />&amp; Coaching Insights
+              <br />
+              &amp; Coaching Insights
             </h2>
           </div>
 
@@ -1057,7 +1088,10 @@ const LandingPage = () => {
       <section id="7-day-challenge" className="py-16 md:py-24 bg-white border-t border-slate-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 md:mb-12">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h2
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Experience a Shift Daily. For Free.
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-charcoal/80 max-w-4xl mx-auto leading-relaxed font-medium">
@@ -1124,7 +1158,10 @@ const LandingPage = () => {
         </div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+          <h2
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight"
+            style={{ fontFamily: "Playfair Display" }}
+          >
             Ready to Resolve Your Soul Blueprint
             <br />
             <span className="text-gold">And Embody Your Mission?</span>
