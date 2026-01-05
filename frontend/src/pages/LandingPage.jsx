@@ -104,9 +104,33 @@ const LandingPage = () => {
     };
   }, [isMobileMenuOpen]);
 
+  const openUrl = (url) => {
+    if (!url) return;
+    // If it's an in-page anchor, handle it as a scroll
+    if (typeof url === "string" && url.startsWith("#")) {
+      scrollToSection(url);
+      return;
+    }
+    // Otherwise open normally (new tab for external, same tab is ok too)
+    // Keeping it consistent: new tab for external URLs.
+    try {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } catch {
+      window.location.href = url;
+    }
+  };
+
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+    if (!element) return;
+
+    // Account for fixed nav height
+    const navOffset = 96; // safe default for mobile/desktop
+    const rect = element.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const top = rect.top + scrollTop - navOffset;
+
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   /**
@@ -402,8 +426,8 @@ const LandingPage = () => {
             className="text-base sm:text-xl md:text-3xl mb-8 sm:mb-10 md:mb-12 max-w-3xl md:max-w-5xl mx-auto leading-relaxed animate-fade-in-up font-medium"
             style={{ animationDelay: "0.2s", color: "rgba(249,250,251,0.9)" }}
           >
-            Helping successful spiritual entrepreneurs transmute their final energetic blocks, unlock their full power,
-            and access the intuitive clarity needed to make their greatest impact.
+            Helping successful spiritual entrepreneurs transmute their final energetic blocks, unlock their full power, and access the
+            intuitive clarity needed to make their greatest impact.
           </p>
 
           {/* Social Proof — MOBILE FRIENDLY */}
@@ -446,8 +470,8 @@ const LandingPage = () => {
               Connect to the Power Within in 15 Minutes
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 leading-relaxed">
-              Don&apos;t settle for generic tools. Take the 30-second quiz to receive a premium Activation Meditation
-              tailored to your goals—the same caliber of tool my private clients use.
+              Don&apos;t settle for generic tools. Take the 30-second quiz to receive a premium Activation Meditation tailored to your
+              goals—the same caliber of tool my private clients use.
             </p>
 
             <Button
@@ -528,18 +552,16 @@ const LandingPage = () => {
 
               <div className="space-y-5 text-base sm:text-lg text-charcoal leading-relaxed">
                 <p>
-                  My journey started in the clinical field. I was driven by a desire to help, but I quickly realized we
-                  were often treating symptoms rather than root causes.
+                  My journey started in the clinical field. I was driven by a desire to help, but I quickly realized we were often
+                  treating symptoms rather than root causes.
                 </p>
                 <p>
-                  That logical world was shattered when a chance encounter with a medium triggered trauma, memories and
-                  spiritual abilities I had suppressed since a child. It launched me onto a new path—mastering Reiki,
-                  mediumship, and channeling.
+                  That logical world was shattered when a chance encounter with a medium triggered trauma, memories and spiritual
+                  abilities I had suppressed since a child. It launched me onto a new path—mastering Reiki, mediumship, and channeling.
                 </p>
                 <p>
-                  I became an established practitioner. I was helping people. I was doing the deep inner work, keeping
-                  my vibration high, and consuming all the spiritual &amp; self development self-help books and courses
-                  I could get my hands on.
+                  I became an established practitioner. I was helping people. I was doing the deep inner work, keeping my vibration high,
+                  and consuming all the spiritual &amp; self development self-help books and courses I could get my hands on.
                 </p>
 
                 {!isStoryExpanded && (
@@ -556,26 +578,23 @@ const LandingPage = () => {
                   <>
                     <p className="font-semibold text-navy">But then, life threw me a curveball.</p>
                     <p>
-                      Despite doing everything &quot;right,&quot; I experienced a major negative event that made no
-                      sense. It forced me to ask the question that changed everything:{" "}
-                      <span className="italic font-semibold">
-                        “If I’m managing my energy and mindset so perfectly, why is this happening?”
-                      </span>
+                      Despite doing everything &quot;right,&quot; I experienced a major negative event that made no sense. It forced me to ask
+                      the question that changed everything:{" "}
+                      <span className="italic font-semibold">“If I’m managing my energy and mindset so perfectly, why is this happening?”</span>
                     </p>
                     <p>
-                      That question led me into years of hermiting and deep channeling the Akashic Records. I explored
-                      many of my past lives and discovered something I&apos;ve never heard anyone else talk about. While I
-                      was “maintaining” my Energy Field, my Soul Blueprint (my &quot;source code&quot;) was still running
-                      an old story. I was pouring pure water into a &quot;rusty cup.&quot;
+                      That question led me into years of hermiting and deep channeling the Akashic Records. I explored many of my past lives
+                      and discovered something I&apos;ve never heard anyone else talk about. While I was “maintaining” my Energy Field, my Soul
+                      Blueprint (my &quot;source code&quot;) was still running an old story. I was pouring pure water into a &quot;rusty cup.&quot;
                     </p>
                     <p>
-                      Once I learned to resolve the Blueprint itself, the struggle dissolved. My intuition became crystal
-                      clear, I stepped fully into my full authentic power and mission.
+                      Once I learned to resolve the Blueprint itself, the struggle dissolved. My intuition became crystal clear, I stepped fully
+                      into my full authentic power and mission.
                     </p>
                     <p className="text-lg sm:text-xl font-semibold text-navy">Now, I’m here to help you do the same.</p>
                     <p className="font-semibold text-navy">
-                      My mission is to create a Butterfly Effect: by helping leaders like you unlock your full power, we
-                      shift the consciousness of the entire planet together.
+                      My mission is to create a Butterfly Effect: by helping leaders like you unlock your full power, we shift the consciousness
+                      of the entire planet together.
                     </p>
 
                     <div className="pt-4">
@@ -606,17 +625,18 @@ const LandingPage = () => {
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-10 md:mb-12">
-            <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">
-              Free 3-Day Live Challenge
-            </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">Free 3-Day Live Challenge</div>
+            <h2
+              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Mission Block Clarity
               <br />
               <span className="text-gold">3-Day Challenge</span>
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed font-medium">
-              Discover how the unresolved <span className="font-bold text-gold">Soul Blueprint</span> is stopping you
-              from completing your mission to your greatest potential.
+              Discover how the unresolved <span className="font-bold text-gold">Soul Blueprint</span> is stopping you from completing your mission
+              to your greatest potential.
             </p>
             <p className="text-base md:text-lg text-gold font-semibold mt-4">LIVE with Ken Franceschi</p>
           </div>
@@ -624,21 +644,20 @@ const LandingPage = () => {
           <div className="max-w-4xl mx-auto mb-10 md:mb-12 bg-slate-900/70 rounded-3xl border border-gold/30 shadow-2xl px-6 sm:px-8 md:px-12 py-8 md:py-10 text-center">
             <div className="space-y-5 text-base md:text-lg text-white/90 leading-relaxed">
               <p>
-                Through years of deep channeling the Akashic Records, I uncovered the true mechanics of why so many
-                Purpose-Driven Souls hit a ceiling in their journey.
+                Through years of deep channeling the Akashic Records, I uncovered the true mechanics of why so many Purpose-Driven Souls hit a
+                ceiling in their journey.
               </p>
               <p>
-                To step into your highest potential, you must resolve the{" "}
-                <span className="font-semibold text-gold">Soul Blueprint</span>—the old &quot;source code&quot; you came
-                in with—so you become the vessel that is fully compatible with the impact waiting for you.
+                To step into your highest potential, you must resolve the <span className="font-semibold text-gold">Soul Blueprint</span>—the old
+                &quot;source code&quot; you came in with—so you become the vessel that is fully compatible with the impact waiting for you.
               </p>
               <p>
-                Over three short, value-packed sessions, we will uncover the &quot;Missing Link&quot; that most teachings
-                miss. No fluff. Just my genuine insights from years of channeling and doing this work.
+                Over three short, value-packed sessions, we will uncover the &quot;Missing Link&quot; that most teachings miss. No fluff. Just my
+                genuine insights from years of channeling and doing this work.
               </p>
               <p>
-                This is for the spiritual entrepreneur who is ready to stop wasting time figuring it out on their own.
-                Your mission is too important to wait—it’s time to take the next step toward full embodiment.
+                This is for the spiritual entrepreneur who is ready to stop wasting time figuring it out on their own. Your mission is too
+                important to wait—it’s time to take the next step toward full embodiment.
               </p>
             </div>
           </div>
@@ -671,10 +690,11 @@ const LandingPage = () => {
       <section id="work-with-me" className="py-16 md:py-24 bg-warm-white border-t border-slate-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10">
-            <div className="inline-block mb-3 text-sage font-semibold text-sm tracking-wider uppercase">
-              Personalized Support
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-4 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <div className="inline-block mb-3 text-sage font-semibold text-sm tracking-wider uppercase">Personalized Support</div>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-4 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Get Immediate Clarity.
               <br />
               Let&apos;s Pinpoint the Root Cause.
@@ -689,9 +709,8 @@ const LandingPage = () => {
                   <ChevronRight className="w-5 h-5 text-sage" />
                 </span>
                 <span className="min-w-0">
-                  <span className="font-semibold">Go straight to the root.</span> I will read your energetic field to
-                  pinpoint the specific root cause of your most persistent blocks and the &quot;Source Code&quot;
-                  patterns keeping you stuck.
+                  <span className="font-semibold">Go straight to the root.</span> I will read your energetic field to pinpoint the specific root
+                  cause of your most persistent blocks and the &quot;Source Code&quot; patterns keeping you stuck.
                 </span>
               </li>
               <li className="flex items-start gap-3 min-w-0">
@@ -699,8 +718,8 @@ const LandingPage = () => {
                   <ChevronRight className="w-5 h-5 text-sage" />
                 </span>
                 <span className="min-w-0">
-                  <span className="font-semibold">Get Clarity.</span> Receive direct, spirit-led guidance on exactly what
-                  is holding you back on your unique path, so you stop guessing and know where to focus your energy next.
+                  <span className="font-semibold">Get Clarity.</span> Receive direct, spirit-led guidance on exactly what is holding you back on
+                  your unique path, so you stop guessing and know where to focus your energy next.
                 </span>
               </li>
               <li className="flex items-start gap-3 min-w-0">
@@ -708,9 +727,9 @@ const LandingPage = () => {
                   <ChevronRight className="w-5 h-5 text-sage" />
                 </span>
                 <span className="min-w-0">
-                  <span className="font-semibold">Map the Path Forward.</span> We will assess your readiness for the
-                  deeper work. If we are a match, I will map out how my Channeled 3-Step Process can help you resolve
-                  these blocks so you can fulfill your mission at the highest level.
+                  <span className="font-semibold">Map the Path Forward.</span> We will assess your readiness for the deeper work. If we are a
+                  match, I will map out how my Channeled 3-Step Process can help you resolve these blocks so you can fulfill your mission at the
+                  highest level.
                 </span>
               </li>
             </ul>
@@ -749,17 +768,17 @@ const LandingPage = () => {
       <section id="mentorship" className="py-16 md:py-24 bg-warm-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
-            <div className="inline-block mb-4 text-sage font-semibold text-sm tracking-wider uppercase">
-              High-Level Mentorship
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <div className="inline-block mb-4 text-sage font-semibold text-sm tracking-wider uppercase">High-Level Mentorship</div>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               For Direct Guidance and
               <br />
               High-Level Support
             </h2>
             <p className="text-lg md:text-xl text-charcoal max-w-3xl mx-auto leading-relaxed">
-              Ready for deeper, personalized work? I offer targeted 1:1 sessions for clarity, energy clearing, and
-              spiritual business mentorship.
+              Ready for deeper, personalized work? I offer targeted 1:1 sessions for clarity, energy clearing, and spiritual business mentorship.
             </p>
           </div>
 
@@ -816,12 +835,15 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4 text-gold font-semibold text-sm tracking-wider uppercase">Live Events</div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight text-white" style={{ fontFamily: "Playfair Display" }}>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight text-white"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Join Us for Live Transformation.
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed">
-              Whether you need clarity on your blocks, coaching on your mission, or a deep energetic reset—our live events
-              are where the shift happens.
+              Whether you need clarity on your blocks, coaching on your mission, or a deep energetic reset—our live events are where the shift
+              happens.
             </p>
           </div>
 
@@ -886,12 +908,15 @@ const LandingPage = () => {
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
             <div className="min-w-0">
               <div className="inline-block mb-4 text-gold font-bold text-sm tracking-wider uppercase">Join The Family</div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+              <h2
+                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight"
+                style={{ fontFamily: "Playfair Display" }}
+              >
                 Finally,
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-white/90 mb-7 leading-relaxed font-medium">
-                A dedicated space for spiritual entrepreneurs, practitioners, and change-makers to connect, collaborate,
-                and receive the guidance &amp; energetic support needed to fuel your mission.
+                A dedicated space for spiritual entrepreneurs, practitioners, and change-makers to connect, collaborate, and receive the guidance
+                &amp; energetic support needed to fuel your mission.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
@@ -946,7 +971,10 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-6 text-sage font-bold text-base tracking-wider uppercase">Insights</div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h2
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Channeled Wisdom
               <br />
               &amp; Coaching Insights
@@ -963,6 +991,13 @@ const LandingPage = () => {
                 <Card
                   key={video.id}
                   className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                  onClick={() => openUrl(video.url || externalLinks.youtube)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") openUrl(video.url || externalLinks.youtube);
+                  }}
+                  aria-label={`Open video: ${video.title}`}
                 >
                   <div className="relative h-48 overflow-hidden">
                     <img
@@ -999,7 +1034,7 @@ const LandingPage = () => {
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full transition-all duration-300"
-                onClick={() => (window.location.href = externalLinks.youtube)}
+                onClick={() => openUrl(externalLinks.youtube)}
               >
                 Watch More on YouTube
               </Button>
@@ -1016,6 +1051,13 @@ const LandingPage = () => {
                 <Card
                   key={post.id}
                   className="bg-white border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer overflow-hidden"
+                  onClick={() => openUrl(post.url || externalLinks.blog)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") openUrl(post.url || externalLinks.blog);
+                  }}
+                  aria-label={`Open article: ${post.title}`}
                 >
                   <div className="relative h-48 overflow-hidden">
                     <img
@@ -1051,7 +1093,7 @@ const LandingPage = () => {
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto border-2 border-navy text-navy hover:bg-navy hover:text-white px-8 py-6 md:px-10 md:py-7 text-lg md:text-xl font-bold rounded-full transition-all duration-300"
-                onClick={() => (window.location.href = externalLinks.blog)}
+                onClick={() => openUrl(externalLinks.blog)}
               >
                 Read More Articles
               </Button>
@@ -1064,7 +1106,10 @@ const LandingPage = () => {
       <section id="7-day-challenge" className="py-16 md:py-24 bg-white border-t border-slate-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 md:mb-12">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+            <h2
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-navy mb-6 leading-tight"
+              style={{ fontFamily: "Playfair Display" }}
+            >
               Experience a Shift Daily. For Free.
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-charcoal/80 max-w-4xl mx-auto leading-relaxed font-medium">
@@ -1076,24 +1121,22 @@ const LandingPage = () => {
             <div className="space-y-5 text-base md:text-lg text-charcoal leading-relaxed">
               <p>Your power isn&apos;t something you find; it&apos;s something you embody.</p>
               <p>
-                I’ve compiled a series of 7 powerful activation meditations—taken from $111 private sessions—and packaged
-                them into a free 7-day inbox experience.
+                I’ve compiled a series of 7 powerful activation meditations—taken from $111 private sessions—and packaged them into a free 7-day
+                inbox experience.
               </p>
             </div>
 
             <div className="mt-8">
               <p className="font-semibold text-navy text-lg mb-4">🔥 WARNING! May Cause Side Effects of:</p>
               <ul className="space-y-3">
-                {["Feeling connected", "Boosted energy", "Feeling powerful", "Increased confidence", "Groundedness and presence"].map(
-                  (item) => (
-                    <li key={item} className="flex items-start gap-3 min-w-0">
-                      <div className="w-6 h-6 bg-sage rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <ChevronRight className="w-3 h-3 text-white" />
-                      </div>
-                      <span className="text-charcoal/90 min-w-0">{item}</span>
-                    </li>
-                  )
-                )}
+                {["Feeling connected", "Boosted energy", "Feeling powerful", "Increased confidence", "Groundedness and presence"].map((item) => (
+                  <li key={item} className="flex items-start gap-3 min-w-0">
+                    <div className="w-6 h-6 bg-sage rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <ChevronRight className="w-3 h-3 text-white" />
+                    </div>
+                    <span className="text-charcoal/90 min-w-0">{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -1131,14 +1174,16 @@ const LandingPage = () => {
         </div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight" style={{ fontFamily: "Playfair Display" }}>
+          <h2
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight"
+            style={{ fontFamily: "Playfair Display" }}
+          >
             Ready to Resolve Your Soul Blueprint
             <br />
             <span className="text-gold">And Embody Your Mission?</span>
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-10 md:mb-12 leading-relaxed font-medium max-w-4xl mx-auto">
-            Join the Mission Block Clarity Challenge and discover the advanced energetic patterns keeping you from your
-            highest potential.
+            Join the Mission Block Clarity Challenge and discover the advanced energetic patterns keeping you from your highest potential.
           </p>
           <Button
             size="lg"
@@ -1181,6 +1226,7 @@ const LandingPage = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-white/10 hover:bg-gold/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                    aria-label={social.platform}
                   >
                     {IconComponent ? <IconComponent className="w-5 h-5" /> : null}
                   </a>
